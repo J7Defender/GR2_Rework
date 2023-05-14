@@ -1,0 +1,17 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplayserverconfigsubsystem.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue\\unrealengine\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\development\\multiplaygameserversdk\\definitions.multiplaygameserversdk.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\source\\multiplaygameserversdk\\public\\multiplayserverconfigsubsystem.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\source\\multiplaygameserversdk\\public\\multiplayserverconfig.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplayserverconfig.generated.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplayserverconfigsubsystem.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplaydeallocation.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue\\unrealengine\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\development\\multiplaygameserversdk\\definitions.multiplaygameserversdk.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\source\\multiplaygameserversdk\\public\\multiplaydeallocation.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplaydeallocation.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

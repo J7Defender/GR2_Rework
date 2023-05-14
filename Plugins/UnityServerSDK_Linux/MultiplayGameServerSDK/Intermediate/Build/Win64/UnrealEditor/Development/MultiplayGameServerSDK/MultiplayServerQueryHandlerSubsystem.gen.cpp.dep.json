@@ -1,0 +1,24 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplayserverqueryhandlersubsystem.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue\\unrealengine\\engine\\intermediate\\build\\win64\\unrealeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\development\\multiplaygameserversdk\\definitions.multiplaygameserversdk.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\source\\multiplaygameserversdk\\public\\multiplayserverqueryhandlersubsystem.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\networking\\public\\common\\udpsocketreceiver.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\core\\public\\serialization\\arrayreader.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\sockets\\public\\sockets.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\sockets\\public\\socketsubsystem.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\sockets\\public\\addressinfotypes.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\networking\\public\\interfaces\\ipv4\\ipv4endpoint.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\networking\\public\\interfaces\\ipv4\\ipv4address.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\networking\\public\\interfaces\\ipv4\\ipv4subnetmask.h",
+            "e:\\ue\\unrealengine\\engine\\source\\runtime\\networking\\public\\common\\udpsocketbuilder.h",
+            "e:\\gr2_rework\\plugins\\unityserversdk_linux\\multiplaygameserversdk\\intermediate\\build\\win64\\unrealeditor\\inc\\multiplaygameserversdk\\uht\\multiplayserverqueryhandlersubsystem.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
