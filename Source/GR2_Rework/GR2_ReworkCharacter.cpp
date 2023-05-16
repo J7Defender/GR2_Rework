@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Net/UnrealNetwork.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -32,9 +33,16 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 	Mesh1P->SetupAttachment(FirstPersonCameraComponent);
 	Mesh1P->bCastDynamicShadow = false;
 	Mesh1P->CastShadow = false;
-	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
+	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
+	Mesh3P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh3P"));
+	Mesh3P->SetupAttachment(GetCapsuleComponent());
+	Mesh3P->SetOwnerNoSee(true);
+	Mesh3P->bCastDynamicShadow = true;
+	Mesh3P->CastShadow = true;
+	Mesh3P->SetRelativeRotation(FRotator(0.f,-90.f,0.f));
+	Mesh3P->SetRelativeLocation(FVector(0.f, 0.f, -80.f));
 }
 
 void AGR2_ReworkCharacter::BeginPlay()
@@ -64,6 +72,10 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		//Crouching		
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &AGR2_ReworkCharacter::StartCrouch);
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Completed, this, &AGR2_ReworkCharacter::StopCrouch);
+
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::Move);
 
@@ -71,7 +83,6 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::Look);
 	}
 }
-
 
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
 {
@@ -97,6 +108,27 @@ void AGR2_ReworkCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AGR2_ReworkCharacter::StartCrouch()
+{
+	UE_LOG(LogTemp, Warning, TEXT("StartCrouch"));
+	Crouch();
+}
+
+void AGR2_ReworkCharacter::StopCrouch()
+{
+	UE_LOG(LogTemp, Warning, TEXT("StopCrouch"));
+	UnCrouch();
+}
+
+void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	// Replicate these things
+	DOREPLIFETIME(AGR2_ReworkCharacter, Mesh3P);
+	DOREPLIFETIME(AGR2_ReworkCharacter, GunMesh);
 }
 
 void AGR2_ReworkCharacter::SetHasRifle(bool bNewHasRifle)
