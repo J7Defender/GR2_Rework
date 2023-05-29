@@ -28,6 +28,8 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="ShootingProperties")
 	float TimeBetweenShots;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
+	int Range;
 
 protected:
 	// Called when the game starts or when spawned

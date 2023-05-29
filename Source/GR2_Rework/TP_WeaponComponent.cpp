@@ -2,12 +2,13 @@
 
 
 #include "TP_WeaponComponent.h"
+
 #include "GR2_ReworkCharacter.h"
-#include "GR2_ReworkProjectile.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Engine/StaticMeshActor.h"
 
 // Sets default values for this component's properties
 UTP_WeaponComponent::UTP_WeaponComponent()
@@ -20,25 +21,27 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 void UTP_WeaponComponent::Fire()
 {	
 	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent::Fire"));
-	// Try and fire a projectile
-	if (ProjectileClass != nullptr)
+	// Try and fire weapon
+
+	FVector Location;
+	FRotator Rotation;
+	FHitResult HitResult;
+
+	Character->GetController()->GetPlayerViewPoint(Location, Rotation);
+
+	FVector RayStart = Location;
+	FVector RayEnd = RayStart + (Rotation.Vector() * WeaponBlueprint->Range);
+
+	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility);
+
+	if (HitResult.GetActor()->GetClass() == AStaticMeshActor::StaticClass())
 	{
-		UWorld* const World = GetWorld();
-		if (World != nullptr)
-		{
-			APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
-			const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
-			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
-	
-			//Set Spawn Collision Handling Override
-			FActorSpawnParameters ActorSpawnParams;
-			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-	
-			// Spawn the projectile at the muzzle
-			World->SpawnActor<AGR2_ReworkProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-		}
+		UE_LOG(LogTemp, Warning, TEXT("HIT"));
 	}
+
+#if WITH_EDITOR
+	DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor::Red, false, 2.f);
+#endif	
 	
 	// Try and play the sound if specified
 	// TODO: Add fire sound to weapon
