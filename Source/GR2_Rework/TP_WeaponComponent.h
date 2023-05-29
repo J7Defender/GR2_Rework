@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GR2_ReworkWeapon.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "TP_WeaponComponent.generated.h"
 
@@ -13,7 +14,7 @@ class GR2_REWORK_API UTP_WeaponComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
-public:
+public:	
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class AGR2_ReworkProjectile> ProjectileClass;
@@ -38,12 +39,22 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	class UInputAction* FireAction;
 
+	UPROPERTY(BlueprintReadWrite, Category="BluePrint")
+	AGR2_ReworkWeapon* WeaponBlueprint;
+
 	/** Sets default values for this component's properties */
 	UTP_WeaponComponent();
 
 	/** Attaches the actor to a FirstPersonCharacter */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void AttachWeapon(AGR2_ReworkCharacter* TargetCharacter);
+
+	/** Start a Fire Sequence */
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	void StartFire();
+
+	UFUNCTION(BlueprintCallable, Category="Weapon")
+	void StopFire();
 
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
@@ -57,4 +68,10 @@ protected:
 private:
 	/** The Character holding this weapon*/
 	AGR2_ReworkCharacter* Character;
+
+	/** Handle the automatic firing */
+	FTimerHandle TimerHandle_HandleFire;
+
+	bool IsFiring = false;
+	void AutomaticFiring();
 };

@@ -14,6 +14,20 @@ class GR2_REWORK_API AGR2_ReworkWeapon : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AGR2_ReworkWeapon();
+	
+	/** Gun mesh */
+	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=Mesh)
+	// USkeletalMeshComponent* GunMesh;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
+	bool IsAutomatic;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
+	int FireRate;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="ShootingProperties")
+	float TimeBetweenShots;
+
 
 protected:
 	// Called when the game starts or when spawned

@@ -27,10 +27,6 @@ class AGR2_ReworkCharacter : public ACharacter
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh, Replicated)
 	USkeletalMeshComponent* Mesh3P;
 
-	/** Gun mesh */
-	UPROPERTY(VisibleDefaultsOnly, Category=Mesh, Replicated)
-	USkeletalMeshComponent* GunMesh;
-
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;

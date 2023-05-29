@@ -128,7 +128,6 @@ void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 
 	// Replicate these things
 	DOREPLIFETIME(AGR2_ReworkCharacter, Mesh3P);
-	DOREPLIFETIME(AGR2_ReworkCharacter, GunMesh);
 }
 
 void AGR2_ReworkCharacter::SetHasRifle(bool bNewHasRifle)

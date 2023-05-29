@@ -2,6 +2,16 @@
 	"RemapUnityFiles": 
 	{
 		"Module.MultiplayGameServerSDK.cpp.obj": [
+			"MultiplayAllocation.gen.cpp.obj",
+			"MultiplayDeallocation.gen.cpp.obj",
+			"MultiplayErrorResponse.gen.cpp.obj",
+			"MultiplayGameServerSDK.init.gen.cpp.obj",
+			"MultiplayGameServerSubsystem.gen.cpp.obj",
+			"MultiplayPayloadAllocationErrorResponse.gen.cpp.obj",
+			"MultiplayPayloadTokenResponse.gen.cpp.obj",
+			"MultiplayServerConfig.gen.cpp.obj",
+			"MultiplayServerConfigSubsystem.gen.cpp.obj",
+			"MultiplayServerQueryHandlerSubsystem.gen.cpp.obj",
 			"MultiplayCentrifugeClient.cpp.obj",
 			"MultiplayCentrifugeLog.cpp.obj",
 			"MultiplayCentrifugeMessages.spec.cpp.obj",
@@ -27,17 +37,7 @@
 			"OpenAPIPayloadApi.cpp.obj",
 			"OpenAPIPayloadApiOperations.cpp.obj",
 			"OpenAPIPayloadTokenResponseBody.cpp.obj",
-			"AutomationTestUtils.cpp.obj",
-			"MultiplayAllocation.gen.cpp.obj",
-			"MultiplayDeallocation.gen.cpp.obj",
-			"MultiplayErrorResponse.gen.cpp.obj",
-			"MultiplayGameServerSDK.init.gen.cpp.obj",
-			"MultiplayGameServerSubsystem.gen.cpp.obj",
-			"MultiplayPayloadAllocationErrorResponse.gen.cpp.obj",
-			"MultiplayPayloadTokenResponse.gen.cpp.obj",
-			"MultiplayServerConfig.gen.cpp.obj",
-			"MultiplayServerConfigSubsystem.gen.cpp.obj",
-			"MultiplayServerQueryHandlerSubsystem.gen.cpp.obj"
+			"AutomationTestUtils.cpp.obj"
 		]
 	}
 }

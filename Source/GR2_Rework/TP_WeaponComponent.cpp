@@ -6,7 +6,6 @@
 #include "GR2_ReworkProjectile.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
-#include "Kismet/GameplayStatics.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
@@ -19,12 +18,8 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 
 
 void UTP_WeaponComponent::Fire()
-{
-	if (Character == nullptr || Character->GetController() == nullptr)
-	{
-		return;
-	}
-
+{	
+	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent::Fire"));
 	// Try and fire a projectile
 	if (ProjectileClass != nullptr)
 	{
@@ -91,9 +86,29 @@ void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
 			// Fire
-			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
+			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &UTP_WeaponComponent::StartFire);
+			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &UTP_WeaponComponent::StopFire);
 		}
 	}
+}
+
+void UTP_WeaponComponent::StartFire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("StartFire"));
+	IsFiring = true;
+	if (Character == nullptr || Character->GetController() == nullptr)
+	{
+		return;
+	}
+
+	AutomaticFiring();
+}
+
+void UTP_WeaponComponent::StopFire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("StopFire"));
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_HandleFire);
+	IsFiring = false;
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -109,5 +124,14 @@ void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 		{
 			Subsystem->RemoveMappingContext(FireMappingContext);
 		}
+	}
+}
+
+void UTP_WeaponComponent::AutomaticFiring()
+{
+	Fire();
+	if (WeaponBlueprint->IsAutomatic == true)
+	{
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle_HandleFire, this, &UTP_WeaponComponent::Fire, WeaponBlueprint->TimeBetweenShots, true);
 	}
 }

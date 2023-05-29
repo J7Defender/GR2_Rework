@@ -23,8 +23,8 @@ AGR2_ReworkProjectile::AGR2_ReworkProjectile()
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = true;
 
-	// Die after 3 seconds by default
-	InitialLifeSpan = 3.0f;
+	// Die after 10 seconds by default
+	InitialLifeSpan = 10.0f;
 }
 
 void AGR2_ReworkProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
