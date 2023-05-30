@@ -8,7 +8,9 @@
 #include "Camera/PlayerCameraManager.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Engine/DamageEvents.h"
 #include "Engine/StaticMeshActor.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
 UTP_WeaponComponent::UTP_WeaponComponent()
@@ -32,11 +34,21 @@ void UTP_WeaponComponent::Fire()
 	FVector RayStart = Location;
 	FVector RayEnd = RayStart + (Rotation.Vector() * WeaponBlueprint->Range);
 
-	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility);
+	FCollisionQueryParams CollisionQueryParams;
+	CollisionQueryParams.AddIgnoredActor(Character);
 
-	if (HitResult.GetActor()->GetClass() == AStaticMeshActor::StaticClass())
+	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility, CollisionQueryParams);
+
+	if (HitResult.IsValidBlockingHit())
+	// if (HitResult.GetActor() != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HIT"));
+		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
+		
+		FPointDamageEvent PointDamageEvent;
+
+		HitResult.GetActor()->TakeDamage(WeaponBlueprint->Damage, PointDamageEvent, Character->GetController(), Character);
+		
+		// UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController() , Character, UDamageType::StaticClass());
 	}
 
 #if WITH_EDITOR
@@ -97,7 +109,7 @@ void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)
 
 void UTP_WeaponComponent::StartFire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("StartFire"));
+	// UE_LOG(LogTemp, Warning, TEXT("StartFire"));
 	IsFiring = true;
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
@@ -109,7 +121,7 @@ void UTP_WeaponComponent::StartFire()
 
 void UTP_WeaponComponent::StopFire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("StopFire"));
+	// UE_LOG(LogTemp, Warning, TEXT("StopFire"));
 	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_HandleFire);
 	IsFiring = false;
 }

@@ -1,7 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GR2_ReworkCharacter.h"
-#include "GR2_ReworkProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -43,6 +42,9 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 	Mesh3P->CastShadow = true;
 	Mesh3P->SetRelativeRotation(FRotator(0.f,-90.f,0.f));
 	Mesh3P->SetRelativeLocation(FVector(0.f, 0.f, -80.f));
+
+	MaxHealth = 100.f;
+	CurrentHealth = MaxHealth;
 }
 
 void AGR2_ReworkCharacter::BeginPlay()
@@ -82,6 +84,49 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::Look);
 	}
+}
+
+void AGR2_ReworkCharacter::OnHealthUpdate()
+{
+	if (IsLocallyControlled())
+	{
+		FString healthMessage = FString::Printf(TEXT("You now have %f health remaining."), CurrentHealth);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
+
+		if (CurrentHealth <= 0)
+		{
+			FString deathMessage = FString::Printf(TEXT("You have been killed."));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, deathMessage);
+		}
+	}
+
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		FString healthMessage = FString::Printf(TEXT("%s now has %f health remaining."), *GetFName().ToString(), CurrentHealth);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
+	}
+}
+
+void AGR2_ReworkCharacter::OnRep_CurrentHealth()
+{
+	OnHealthUpdate();
+}
+
+void AGR2_ReworkCharacter::SetCurrentHealth(float healthValue)
+{
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		CurrentHealth = FMath::Clamp(healthValue, 0.f, MaxHealth);
+		OnHealthUpdate();
+	}
+}
+
+float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent,
+	AController* EventInstigator, AActor* DamageCauser)
+{
+	UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
+	
+	return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 }
 
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
@@ -128,6 +173,7 @@ void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 
 	// Replicate these things
 	DOREPLIFETIME(AGR2_ReworkCharacter, Mesh3P);
+	DOREPLIFETIME(AGR2_ReworkCharacter, CurrentHealth);
 }
 
 void AGR2_ReworkCharacter::SetHasRifle(bool bNewHasRifle)

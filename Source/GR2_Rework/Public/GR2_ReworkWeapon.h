@@ -31,6 +31,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
 	int Range;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
+	int Damage;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
