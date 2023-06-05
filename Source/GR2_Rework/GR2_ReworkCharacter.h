@@ -94,6 +94,7 @@ protected:
 public:
 	/** Returns Mesh1P subobject **/
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
+	
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
@@ -106,6 +107,14 @@ protected:
 	/** The player's current health. When reduced to 0, they are considered dead.*/
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentHealth)
 	float CurrentHealth;
+
+	/** Character Blueprint */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Blueprint")
+	AGR2_ReworkCharacter* CharacterBlueprint;
+
+	/** Character HUD */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
+	UUserWidget* CharacterHUD;
 
 	/** Response to health being updated. Called on the server immediately after modification, and on clients in response to a RepNotify */
 	void OnHealthUpdate();

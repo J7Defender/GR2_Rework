@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
 #include "Net/UnrealNetwork.h"
 
 
@@ -60,7 +61,6 @@ void AGR2_ReworkCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -125,6 +125,8 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	AController* EventInstigator, AActor* DamageCauser)
 {
 	UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
+
+	SetCurrentHealth(GetCurrentHealth() - DamageAmount);
 	
 	return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 }

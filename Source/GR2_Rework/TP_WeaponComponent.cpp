@@ -39,16 +39,17 @@ void UTP_WeaponComponent::Fire()
 
 	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility, CollisionQueryParams);
 
-	if (HitResult.IsValidBlockingHit())
+	//if (HitResult.IsValidBlockingHit())
+	if (HitResult.GetActor()->CanBeDamaged())
 	// if (HitResult.GetActor() != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
 		
 		FPointDamageEvent PointDamageEvent;
 
-		HitResult.GetActor()->TakeDamage(WeaponBlueprint->Damage, PointDamageEvent, Character->GetController(), Character);
-		
-		// UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController() , Character, UDamageType::StaticClass());
+		//HitResult.GetActor()->TakeDamage(WeaponBlueprint->Damage, PointDamageEvent, Character->GetController(), Character);
+
+		UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController(), Character, UDamageType::StaticClass());
 	}
 
 #if WITH_EDITOR
