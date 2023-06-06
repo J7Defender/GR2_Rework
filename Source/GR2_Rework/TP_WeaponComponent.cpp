@@ -40,16 +40,15 @@ void UTP_WeaponComponent::Fire()
 	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility, CollisionQueryParams);
 
 	//if (HitResult.IsValidBlockingHit())
-	if (HitResult.GetActor()->CanBeDamaged())
-	// if (HitResult.GetActor() != nullptr)
+	if (HitResult.GetActor() != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
 		
 		FPointDamageEvent PointDamageEvent;
 
-		//HitResult.GetActor()->TakeDamage(WeaponBlueprint->Damage, PointDamageEvent, Character->GetController(), Character);
+		// UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController(), Character, UDamageType::StaticClass());
 
-		UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController(), Character, UDamageType::StaticClass());
+		Character->DealDamage(HitResult, WeaponBlueprint->Damage, RayStart, Character);
 	}
 
 #if WITH_EDITOR
@@ -73,6 +72,16 @@ void UTP_WeaponComponent::Fire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
+}
+
+bool UTP_WeaponComponent::Server_OnDealDamage_Validate()
+{
+	return true;
+}
+
+void UTP_WeaponComponent::Server_OnDealDamage_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Server Deal Damage Implementation"));
 }
 
 void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)

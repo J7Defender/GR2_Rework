@@ -60,6 +60,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();
 
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_OnDealDamage();
+	bool Server_OnDealDamage_Validate();
+	void Server_OnDealDamage_Implementation();
+
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()

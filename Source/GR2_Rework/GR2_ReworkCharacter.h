@@ -70,6 +70,13 @@ public:
 	/** Getter for the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
+	
+	void DealDamage(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_OnDealDamage(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
+	bool Server_OnDealDamage_Validate(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
+	void Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 
 protected:
 	/** Called for movement input */
@@ -117,6 +124,7 @@ protected:
 	UUserWidget* CharacterHUD;
 
 	/** Response to health being updated. Called on the server immediately after modification, and on clients in response to a RepNotify */
+	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnHealthUpdate();
 	
 	/** RepNotify for changes made to current health.*/

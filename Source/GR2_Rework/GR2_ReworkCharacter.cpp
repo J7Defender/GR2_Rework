@@ -7,6 +7,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
 
@@ -86,25 +87,25 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	}
 }
 
-void AGR2_ReworkCharacter::OnHealthUpdate()
-{
+void AGR2_ReworkCharacter::OnHealthUpdate_Implementation()
+{	
 	if (IsLocallyControlled())
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Player has %f health remaining"), CurrentHealth);
 		FString healthMessage = FString::Printf(TEXT("You now have %f health remaining."), CurrentHealth);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
-
 		if (CurrentHealth <= 0)
 		{
+			UE_LOG(LogTemp,Warning, TEXT("Player has been killed"));
 			FString deathMessage = FString::Printf(TEXT("You have been killed."));
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, deathMessage);
 		}
 	}
 
-	if (GetLocalRole() == ROLE_Authority)
+	if (HasAuthority())
 	{
-		FString healthMessage = FString::Printf(TEXT("%s now has %f health remaining."), *GetFName().ToString(), CurrentHealth);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
-	}
+		UE_LOG(LogTemp, Warning, TEXT("%s now has %f health remaining."), *GetFName().ToString(), CurrentHealth);
+	}	
 }
 
 void AGR2_ReworkCharacter::OnRep_CurrentHealth()
@@ -117,7 +118,6 @@ void AGR2_ReworkCharacter::SetCurrentHealth(float healthValue)
 	if (GetLocalRole() == ROLE_Authority)
 	{
 		CurrentHealth = FMath::Clamp(healthValue, 0.f, MaxHealth);
-		OnHealthUpdate();
 	}
 }
 
@@ -186,4 +186,23 @@ void AGR2_ReworkCharacter::SetHasRifle(bool bNewHasRifle)
 bool AGR2_ReworkCharacter::GetHasRifle()
 {
 	return bHasRifle;
+}
+
+void AGR2_ReworkCharacter::DealDamage(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Call to Deal Damage Character"));
+	
+	Server_OnDealDamage(HitResult, Damage, HitFrom, DamageCauser);
+}
+
+bool AGR2_ReworkCharacter::Server_OnDealDamage_Validate(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
+{
+	return true;
+}
+
+void AGR2_ReworkCharacter::Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Server Deal Damage from Character"));
+
+	UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), Damage, HitFrom, HitResult, DamageCauser->GetController(), DamageCauser, UDamageType::StaticClass());
 }
