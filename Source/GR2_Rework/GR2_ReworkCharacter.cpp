@@ -6,7 +6,8 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "Blueprint/UserWidget.h"
+#include "GR2_ReworkDefines.h"
+#include "GR2_ReworkGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -87,18 +88,28 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	}
 }
 
-void AGR2_ReworkCharacter::OnHealthUpdate_Implementation()
+void AGR2_ReworkCharacter::OnHealthUpdateUI_Implementation()
+{
+	// Implemented in Blueprint
+}
+
+void AGR2_ReworkCharacter::OnHealthUpdate()
 {	
 	if (IsLocallyControlled())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Player has %f health remaining"), CurrentHealth);
 		FString healthMessage = FString::Printf(TEXT("You now have %f health remaining."), CurrentHealth);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
+		OnHealthUpdateUI();
 		if (CurrentHealth <= 0)
 		{
 			UE_LOG(LogTemp,Warning, TEXT("Player has been killed"));
 			FString deathMessage = FString::Printf(TEXT("You have been killed."));
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, deathMessage);
+
+			OnDeathServer();
+			
+			OnDeathUpdateUI();
 		}
 	}
 
@@ -106,6 +117,37 @@ void AGR2_ReworkCharacter::OnHealthUpdate_Implementation()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("%s now has %f health remaining."), *GetFName().ToString(), CurrentHealth);
 	}	
+}
+
+bool AGR2_ReworkCharacter::OnDeathServer_Validate()
+{
+	return true;
+}
+
+void AGR2_ReworkCharacter::ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController)
+{
+	GameMode->RestartPlayer(CurrentController);
+}
+
+void AGR2_ReworkCharacter::OnDeathServer_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
+	
+	AController* CurrentController = GetController();
+	
+	// Destroy current player
+	Destroy();
+
+	if (const UWorld* World = GetWorld())
+	{
+		if (AGR2_ReworkGameMode* GameMode = Cast<AGR2_ReworkGameMode>(World->GetAuthGameMode()))
+			{ GameMode->RestartPlayerTimer(CurrentController); }
+	}
+}
+
+void AGR2_ReworkCharacter::OnDeathUpdateUI_Implementation()
+{
+	// Implemented in Blueprints
 }
 
 void AGR2_ReworkCharacter::OnRep_CurrentHealth()

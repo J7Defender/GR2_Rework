@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GR2_ReworkGameMode.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "GR2_ReworkCharacter.generated.h"
@@ -122,10 +123,23 @@ protected:
 	/** Character HUD */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
 	UUserWidget* CharacterHUD;
-
-	/** Response to health being updated. Called on the server immediately after modification, and on clients in response to a RepNotify */
+	
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
+	void OnHealthUpdateUI();
+	
+	/** Response to health being updated. Called on immediately after modification, and on clients in response to a RepNotify */
 	void OnHealthUpdate();
+	
+	UFUNCTION(Server, Reliable, WithValidation)
+	void OnDeathServer();
+	bool OnDeathServer_Validate();
+	void OnDeathServer_Implementation();
+
+	UFUNCTION()
+	static void ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController);
+
+	UFUNCTION(BlueprintNativeEvent, Category="Health")
+	void OnDeathUpdateUI();
 	
 	/** RepNotify for changes made to current health.*/
 	UFUNCTION()
