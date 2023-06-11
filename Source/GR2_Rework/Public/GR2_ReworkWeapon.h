@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "GR2_ReworkWeapon.generated.h"
 
+UENUM(BlueprintType)
+enum EWeaponType { Primary, Secondary, Knife };
+
 UCLASS()
 class GR2_REWORK_API AGR2_ReworkWeapon : public AActor
 {
@@ -33,6 +36,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="ShootingProperties")
 	int Damage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="WeaponsProperties")
+	TEnumAsByte<EWeaponType> weaponType;
 
 protected:
 	// Called when the game starts or when spawned

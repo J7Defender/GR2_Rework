@@ -41,15 +41,6 @@ void AGR2_ReworkGameMode::InitGame(const FString& MapName, const FString& Option
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[Client] PostLogin"));
 	}
-
-	//const FName LoadMapName = "DevLevel";
-
-	//// ReSharper disable once CppDeprecatedEntity
-	//if (World && World->IsServer())
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("[Server] Load Map"));
-	//	//UGameplayStatics(World, LoadMapName, true, FString(TEXT("")));
-	//}
 	
 	Super::InitGame(MapName, Options, ErrorMessage);
 }

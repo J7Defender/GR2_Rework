@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GR2_ReworkGameMode.h"
+#include "GR2_ReworkWeapon.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "GR2_ReworkCharacter.generated.h"
@@ -123,6 +124,16 @@ protected:
 	/** Character HUD */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
 	UUserWidget* CharacterHUD;
+
+	/** Currently holding weapons of player */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	AGR2_ReworkWeapon* Weapon1;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	AGR2_ReworkWeapon* Weapon2;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	AGR2_ReworkWeapon* Weapon3;
 	
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnHealthUpdateUI();
