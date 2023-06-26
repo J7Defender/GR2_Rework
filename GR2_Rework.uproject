@@ -25,6 +25,10 @@
 		{
 			"Name": "MultiplayGameServerSDK",
 			"Enabled": false
+		},
+		{
+			"Name": "CascadeToNiagaraConverter",
+			"Enabled": true
 		}
 	]
 }

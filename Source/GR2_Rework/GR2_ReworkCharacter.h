@@ -58,8 +58,20 @@ protected:
 public:
 		
 	/** Look Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
+
+	/** Fire Input Action */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	class UInputAction* FireAction;
+
+	/** Action choosing primary weapon */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* PrimaryWeaponChooseAction;
+
+	/** Action choosing secondary weapon aka. pistol */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* SecondaryWeaponChooseAction;
 
 	/** Bool for AnimBP to switch to another animation set */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
@@ -80,6 +92,10 @@ public:
 	bool Server_OnDealDamage_Validate(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 	void Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multi_OnFireVFX();
+	void Multi_OnFireVFX_Implementation();
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -96,6 +112,10 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
 
 protected:
+	void OnPrimaryWeaponChoose();
+	void OnSecondaryWeaponChoose();
+	void StartBurst();
+	void StopBurst();
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
 	// End of APawn interface
@@ -106,6 +126,24 @@ public:
 	
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+
+	/** Get Current Weapon*/
+	AGR2_ReworkWeapon* GetCurrentWeapon() const { return CurrentWeapon; }
+
+	/** Set Current Weapon */
+	void SetCurrentWeapon(AGR2_ReworkWeapon* Weapon) { CurrentWeapon = Weapon; };
+
+	/** Get Primary Weapon*/
+	AGR2_ReworkWeapon* GetWeapon1() const { return Weapon1; }
+	
+	/** Set Primary Weapon */
+	void SetWeapon1(AGR2_ReworkWeapon* Weapon) { Weapon1 = Weapon; }
+	
+	/** Get Secondary Weapon*/
+	AGR2_ReworkWeapon* GetWeapon2() const { return Weapon2; }
+
+	/** Set Secondary Weapon */
+	void SetWeapon2(AGR2_ReworkWeapon* Weapon) { Weapon2 = Weapon; }
 
 protected:
 
@@ -125,7 +163,10 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
 	UUserWidget* CharacterHUD;
 
-	/** Currently holding weapons of player */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	AGR2_ReworkWeapon* CurrentWeapon;
+
+	/** Current weapons of player */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
 	AGR2_ReworkWeapon* Weapon1;
 	
@@ -155,6 +196,9 @@ protected:
 	/** RepNotify for changes made to current health.*/
 	UFUNCTION()
 	void OnRep_CurrentHealth();
+
+	UFUNCTION(BlueprintNativeEvent, Category="Weapon")
+	void OnCurrentWeaponSet(AGR2_ReworkWeapon* WeaponToSet);
 
 public:
 	/** Getter for Max Health.*/

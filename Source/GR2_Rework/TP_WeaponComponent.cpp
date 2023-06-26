@@ -9,7 +9,6 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/DamageEvents.h"
-#include "Engine/StaticMeshActor.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values for this component's properties
@@ -17,12 +16,20 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 {
 	// Default offset from the character location for projectiles to spawn
 	MuzzleOffset = FVector(100.0f, 0.0f, 10.0f);
+
+	WeaponFXHandler = new UTP_WeaponFXHandler();
+	if (WeaponFXHandler == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Null WeaponFXHandler"));
+	}
 }
 
-
 void UTP_WeaponComponent::Fire()
-{	
-	UE_LOG(LogTemp, Warning, TEXT("WeaponComponent::Fire"));
+{
+	WeaponFXHandler->DespawnMuzzleFlashFX(WeaponBlueprint);
+
+	WeaponFXHandler->DespawnTrailFX(WeaponBlueprint);
+	
 	// Try and fire weapon
 
 	FVector Location;
@@ -39,28 +46,26 @@ void UTP_WeaponComponent::Fire()
 
 	GetWorld()->LineTraceSingleByChannel(HitResult, RayStart, RayEnd, ECC_Visibility, CollisionQueryParams);
 
-	//if (HitResult.IsValidBlockingHit())
 	if (HitResult.GetActor() != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
 		
 		FPointDamageEvent PointDamageEvent;
 
-		// UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), WeaponBlueprint->Damage, RayStart, HitResult, Character->GetController(), Character, UDamageType::StaticClass());
-
 		Character->DealDamage(HitResult, WeaponBlueprint->Damage, RayStart, Character);
+
+		AGR2_ReworkBulletImpactEffects* ImpactFxInst = WeaponBlueprint->ImpactFX.GetDefaultObject();
+
+		WeaponFXHandler->SpawnFXWithLocation(this, ImpactFxInst->DefaultSound, HitResult.ImpactPoint);
 	}
 
-#if WITH_EDITOR
-	DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor::Red, false, 2.f);
-#endif	
+	// DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor::Red, false, 2.f);
 	
 	// Try and play the sound if specified
-	// TODO: Add fire sound to weapon
-	// if (FireSound != nullptr)
-	// {
-	// 	UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
-	// }
+	if (FireSound != nullptr)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
+	}
 	
 	// Try and play a firing animation if specified
 	if (FireAnimation != nullptr)
@@ -72,68 +77,83 @@ void UTP_WeaponComponent::Fire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
+
+	// Try and display firing Fx if available
+	WeaponFXHandler->SpawnMuzzleFlashFX(this, WeaponBlueprint);
+
+	// Try and display trail Fx if available
+	WeaponFXHandler->SpawnTrailFX(this, WeaponBlueprint, HitResult, RayEnd, Rotation);
 }
 
-bool UTP_WeaponComponent::Server_OnDealDamage_Validate()
+void UTP_WeaponComponent::AttachWeaponToCharacter()
 {
-	return true;
-}
-
-void UTP_WeaponComponent::Server_OnDealDamage_Implementation()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Server Deal Damage Implementation"));
+	const FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
+	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
 }
 
 void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)
 {
+	bool CurrentWeaponSet = false;
+	
 	Character = TargetCharacter;
 	if (Character == nullptr)
 	{
 		return;
 	}
-
-	// Attach the weapon to the First Person Character
-	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
-	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
+	
+	switch (WeaponBlueprint->weaponType)
+	{
+	case Primary:
+		if (Character->GetWeapon1() != nullptr)
+			return;
+		Character->SetWeapon1(WeaponBlueprint);
+		break;
+	case Secondary:
+		if (Character->GetWeapon2() != nullptr)
+			return;
+		Character->SetWeapon2(WeaponBlueprint);
+		break;
+	default:
+		return;
+	}
+	
+	// Attach the weapon to Character
+	AttachWeaponToCharacter();
 	
 	// switch bHasRifle so the animation blueprint can switch to another animation set
 	Character->SetHasRifle(true);
 
-	// Set up action bindings
-	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
+	// Pick up if not holding any weapon
+	// Only get weapon and its info if holding 	
+	if (Character->GetCurrentWeapon() == nullptr)
 	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			// Set the priority of the mapping to 1, so that it overrides the Jump action with the Fire action when using touch input
-			Subsystem->AddMappingContext(FireMappingContext, 1);
-		}
-
-		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
-		{
-			// Fire
-			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &UTP_WeaponComponent::StartFire);
-			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &UTP_WeaponComponent::StopFire);
-		}
+		Character->SetCurrentWeapon(WeaponBlueprint);
+		UE_LOG(LogTemp, Warning, TEXT("Set CurrentWeapon"));
+	} else
+	{
+		SetVisibility(false);
 	}
 }
 
-void UTP_WeaponComponent::StartFire()
+void UTP_WeaponComponent::StartBurst()
 {
-	// UE_LOG(LogTemp, Warning, TEXT("StartFire"));
 	IsFiring = true;
 	if (Character == nullptr || Character->GetController() == nullptr)
 	{
 		return;
 	}
-
+	
 	AutomaticFiring();
 }
 
-void UTP_WeaponComponent::StopFire()
+void UTP_WeaponComponent::StopBurst()
 {
-	// UE_LOG(LogTemp, Warning, TEXT("StopFire"));
 	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_HandleFire);
 	IsFiring = false;
+
+	WeaponFXHandler->DespawnMuzzleFlashFX(WeaponBlueprint);
+
+	WeaponFXHandler->DespawnTrailFX(WeaponBlueprint);
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -143,7 +163,7 @@ void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 		return;
 	}
 
-	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
+	if (const APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{

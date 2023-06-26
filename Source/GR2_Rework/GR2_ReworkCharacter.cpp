@@ -1,13 +1,16 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GR2_ReworkCharacter.h"
+
+#include "GR2_Rework.h"
+
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "GR2_ReworkDefines.h"
 #include "GR2_ReworkGameMode.h"
+#include "TP_WeaponComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -73,7 +76,7 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		//Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		//Crouching		
@@ -85,6 +88,14 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::Look);
+
+		//Weapon
+		EnhancedInputComponent->BindAction(PrimaryWeaponChooseAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::OnPrimaryWeaponChoose);
+		EnhancedInputComponent->BindAction(SecondaryWeaponChooseAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::OnSecondaryWeaponChoose);
+
+		// Fire
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &AGR2_ReworkCharacter::StartBurst);
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &AGR2_ReworkCharacter::StopBurst);
 	}
 }
 
@@ -173,6 +184,11 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 }
 
+void AGR2_ReworkCharacter::Multi_OnFireVFX_Implementation()
+{
+	
+}
+
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
@@ -211,6 +227,40 @@ void AGR2_ReworkCharacter::StopCrouch()
 	UnCrouch();
 }
 
+void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
+{
+	if (Weapon1 == nullptr) { return; }
+	if (CurrentWeapon->weaponType != Primary)
+	{
+		OnCurrentWeaponSet(Weapon1);
+	}
+}
+
+void AGR2_ReworkCharacter::OnSecondaryWeaponChoose()
+{
+	if (Weapon2 == nullptr) { return; }
+	if (CurrentWeapon->weaponType != Secondary)
+	{
+		OnCurrentWeaponSet(Weapon2);
+	}
+}
+
+void AGR2_ReworkCharacter::StartBurst()
+{
+	if (CurrentWeapon != nullptr)
+	{
+		CurrentWeapon->StartBurst();
+	}
+}
+
+void AGR2_ReworkCharacter::StopBurst()
+{
+	if (CurrentWeapon != nullptr)
+	{
+		CurrentWeapon->StopBurst();
+	}
+}
+
 void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -247,4 +297,20 @@ void AGR2_ReworkCharacter::Server_OnDealDamage_Implementation(FHitResult HitResu
 	UE_LOG(LogTemp, Warning, TEXT("Server Deal Damage from Character"));
 
 	UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), Damage, HitFrom, HitResult, DamageCauser->GetController(), DamageCauser, UDamageType::StaticClass());
+}
+
+void AGR2_ReworkCharacter::OnCurrentWeaponSet_Implementation(AGR2_ReworkWeapon* WeaponToSet)
+{
+	//TODO: Change current Weapon and visibility
+	if (CurrentWeapon != nullptr)
+	{
+		CurrentWeapon->SetVisibility(false);
+		StopBurst();
+		SetCurrentWeapon(WeaponToSet);
+		CurrentWeapon->SetVisibility(true);
+	} else
+	{
+		LOG("[Character][OnCurrentWeaponSet] Null CurrentWeapon");
+		return;
+	}
 }

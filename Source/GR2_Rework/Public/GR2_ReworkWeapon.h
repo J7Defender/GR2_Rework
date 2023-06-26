@@ -3,8 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GR2_ReworkBulletImpactEffects.h"
 #include "GameFramework/Actor.h"
 #include "GR2_ReworkWeapon.generated.h"
+
+class UTP_WeaponComponent;
 
 UENUM(BlueprintType)
 enum EWeaponType { Primary, Secondary, Knife };
@@ -40,6 +43,29 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="WeaponsProperties")
 	TEnumAsByte<EWeaponType> weaponType;
 
+	UPROPERTY(BlueprintReadWrite, Category="Component")
+	UTP_WeaponComponent* WeaponComponent;
+
+	/** Muzzle flash FX */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effects")
+	UParticleSystem* MuzzleFlashFX;
+	
+	/** spawned component for muzzle FX */
+	UPROPERTY(Transient)
+	UParticleSystemComponent* MuzzlePSC;
+
+	/** Bullet trail FX */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effects")
+	UParticleSystem* TrailFX;
+	
+	/** spawned component for trail FX */
+	UPROPERTY(Transient)
+	UParticleSystemComponent* TrailPSC;
+
+	/** impact effects */
+	UPROPERTY(EditDefaultsOnly, Category=Effects)
+	TSubclassOf<AGR2_ReworkBulletImpactEffects> ImpactFX;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -48,4 +74,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintNativeEvent, Category = "Weapon")
+	void StartBurst();
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Weapon")
+	void StopBurst();
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Visibility")
+	void SetVisibility(bool	visibility);
 };

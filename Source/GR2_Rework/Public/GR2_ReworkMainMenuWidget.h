@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "GR2_ReworkDefines.h"
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "GR2_ReworkMainMenuWidget.generated.h"

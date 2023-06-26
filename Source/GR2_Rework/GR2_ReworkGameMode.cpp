@@ -1,8 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+// ReSharper disable CppDeprecatedEntity
 #include "GR2_ReworkGameMode.h"
-#include "GR2_ReworkCharacter.h"
-#include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 
 AGR2_ReworkGameMode::AGR2_ReworkGameMode()
