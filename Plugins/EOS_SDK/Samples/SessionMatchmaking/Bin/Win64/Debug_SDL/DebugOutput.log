@@ -1,0 +1,1178 @@
+[2023.06.29-13.18.31:739] [EOS SDK] Initializing ...
+[2023.06.29-13.18.31:758] [EOS SDK] Initialized. Setting Logging Callback ...
+[2023.06.29-13.18.31:759] [EOS SDK] Logging Callback Set
+[2023.06.29-13.18.31:762] [EOS SDK] LogEOS: Default Network Status: EOS_NS_Online
+[2023.06.29-13.18.31:762] [EOS SDK] LogEOS: [Boot] EOSSDK Version 1.15.5-24099393 booting at 2023-06-29T13:18:31.762Z using C
+[2023.06.29-13.18.31:763] [EOS SDK] LogEOS: [Boot] EOSSDK Platform Properties [OS=Windows/10.0.19041.2788.64bit, ClientId=xyza7891jFjQFE0WVCzsbENGankKy9Gr, ProductId=b497b175330445f2a3e22406b0c2db1c, SandboxId=9da644c89986480bb372c371c8ff4641, DeploymentId=e8ed47f3b597470285e17c369123b83e, ProductName=Shadow Strike, ProductVersion=1.0, IsServer=false, Flags=EnableD3D9Overlay+EnableD3D10Overlay+EnableOpenGLOverlay]
+[2023.06.29-13.18.31:763] [EOS SDK] LogEOSAnalytics: Start Session (User: ...)
+[2023.06.29-13.18.31:764] [EOS SDK] LogEOSOverlay: OverlayPath registry key found in HKCU
+[2023.06.29-13.18.32:574] [EOS SDK] LogEOSOverlay: Overlay library loaded, version ++EOSSDK+Release-Overlay-CL-25975892
+[2023.06.29-13.18.32:574] [EOS SDK] LogEOSOverlay: Beginning dxgi factory detour
+[2023.06.29-13.18.32:574] [EOS SDK] LogEOSOverlay: Factory detour complete
+[2023.06.29-13.18.32:575] [EOS SDK] LogEOSOverlay: Beginning swap chain detour
+[2023.06.29-13.18.32:575] [EOS SDK] LogEOSOverlay: Attempting to create swap chain using D3D11
+[2023.06.29-13.18.32:576] [EOS SDK] LogEOSOverlay: Successfully created swap chain using D3D11 with feature level b000
+[2023.06.29-13.18.32:576] [EOS SDK] LogEOSOverlay: Swapchain detour complete
+[2023.06.29-13.18.32:576] [EOS SDK] LogEOSOverlay: Overlay loaded and initialized
+[2023.06.29-13.18.32:577] [EOS SDK] LogEOSAnalytics: Record Event: SDKOverlayComponent.Init <Redacted>
+[2023.06.29-13.18.32:578] [EOS SDK] LogEOSUI: Social Overlay: Configuring intent payload handlers for FSocialOverlayJavascript
+[2023.06.29-13.18.32:578] [EOS SDK] LogEOSUI: Hot key event ignored because there are no known users.
+[2023.06.29-13.18.32:604] [EOS SDK] LogEOSAntiCheat: [AntiCheatClient] Anti-cheat client not available. Verify that the game was started using the anti-cheat bootstrapper if you intend to use it.
+[2023.06.29-13.18.32:605] [EOS SDK] LogEOSRTC: LibRTCCore: Initializing LibRTC...
+[2023.06.29-13.18.33:133] OpenGL Context Chosen: 3.1, Wanted: 3.1
+[2023.06.29-13.18.33:202] AssetDir: E:\GR2_Rework\Plugins\EOS_SDK\Samples\SessionMatchmaking\Bin\Win64\Debug_SDL\../../../../Shared/
+[2023.06.29-13.18.33:304] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.18.33:304] [EOS SDK] LogEOS: Updating Platform SDK Config, Time: 0.696897
+[2023.06.29-13.18.33:305] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.OverlayLoaded <Redacted>
+[2023.06.29-13.18.33:306] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.FactoryDetour <Redacted>
+[2023.06.29-13.18.33:306] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.SwapchainDetour <Redacted>
+[2023.06.29-13.18.33:307] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.ObserveBrowserStatus <Redacted>
+[2023.06.29-13.18.33:307] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.RegisterKeyListener <Redacted>
+[2023.06.29-13.18.33:340] [EOS SDK] LogEOSOverlay: Window subclass attached to 0000000002730D40
+[2023.06.29-13.18.33:340] [EOS SDK] LogEOSOverlay: Creating overlay widget manager
+[2023.06.29-13.18.33:529] [EOS SDK] LogEOSOverlay: Launching render process
+[2023.06.29-13.18.33:534] [EOS SDK] LogEOSOverlay: Overlay ready. Firing 2 OnReady handlers
+[2023.06.29-13.18.33:534] [EOS SDK] LogEOSOverlay: Tick thread starting...
+[2023.06.29-13.18.33:535] [EOS SDK] LogEOSOverlay: Overlay ready. Firing 0 OnReady handlers
+[2023.06.29-13.18.33:891] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.GraphicsDeviceCreated <Redacted>
+[2023.06.29-13.18.33:891] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.OverlayInitialized <Redacted>
+[2023.06.29-13.18.33:892] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.LaunchRenderProcess <Redacted>
+[2023.06.29-13.18.33:892] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.RegisterJSBindings <Redacted>
+[2023.06.29-13.18.33:892] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.RegisterJSBindings <Redacted>
+[2023.06.29-13.18.35:200] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.18.35:215] [EOS SDK] LogEOS: SDK Config Platform Update Request Successful, Time: 2.592735
+[2023.06.29-13.18.35:216] [EOS SDK] LogEOSAnalytics: EOS SDK Analytics disabled for route [1].
+[2023.06.29-13.18.35:217] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 2.607250
+[2023.06.29-13.18.35:217] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.RegisterJSBindings <Redacted>
+[2023.06.29-13.18.35:625] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.18.35:638] [EOS SDK] LogEOSConnect: ConnectClientAuthTask Success
+[2023.06.29-13.18.35:653] [EOS SDK] LogEOSAnalytics: Start Session (User: ...)
+[2023.06.29-13.18.37:331] [EOS SDK] Logging In with Account Portal
+[2023.06.29-13.18.37:331] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay can be used with this login type
+[2023.06.29-13.18.37:332] [EOS SDK] LogEOS: FWindowsDesktopCrossplay::GetSessionStartupInfo: Environment variable EOS_SESSION_STARTUPINFO is not set
+[2023.06.29-13.18.37:332] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay is not ready: EOS_DesktopCrossplay_ApplicationNotBootstrapped
+[2023.06.29-13.18.37:332] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay is not required for login
+[2023.06.29-13.18.38:127] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.18.38:140] [EOS SDK] LogEOS: SDK Config Product Update Request Successful, Time: 5.518488
+[2023.06.29-13.18.38:143] [EOS SDK] LogEOS: SDK Config Data - Watermark: 968253146
+[2023.06.29-13.18.38:143] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 5.518488, Update Interval: 337.186188
+[2023.06.29-13.18.38:492] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.18.39:105] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.18.39:123] [EOS SDK] LogEOSAuth: GenerateUserAuthByDeviceCode: Received FUserAuthToken
+[2023.06.29-13.18.39:136] [EOS SDK] LogEOSAuth: UserAuthGenerated: Device auth to be continued at: <Redacted>
+[2023.06.29-13.18.39:137] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.18.39:137] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.18.39:137] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.18.39:138] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.18.39:180] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=1]
+[2023.06.29-13.18.39:180] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.18.39:180] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.18.39:181] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.18.39:181] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.18.39:181] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.18.39:182] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.18.39:182] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.18.39:182] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.18.39:208] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.19.03:749] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.03:814] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=1, TabId=0, Previous=0000000000000000, New=00000000C0001302]
+[2023.06.29-13.19.03:814] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.19.05:387] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.05:387] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.05:388] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.05:388] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.06:228] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.06:228] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.06:228] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.06:229] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.06:229] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.06:229] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.08:335] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.08:335] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.08:335] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.08:336] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.08:336] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.08:336] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.10:787] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.10:788] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.10:788] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.10:788] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.10:789] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.10:803] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.10:804] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.10:867] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.10:881] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.10:882] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.10:882] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.10:882] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.18:561] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.18:562] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.18:562] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.18:562] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.18:563] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.18:563] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.18:563] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.18:564] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.18:592] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.21:361] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.21:374] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.21:375] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.21:375] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.21:375] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.21:376] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.21:376] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.21:376] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.21:377] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.23:841] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.23:842] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.23:842] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.23:842] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.23:843] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.23:843] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.35:023] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.35:023] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.35:023] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.35:023] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.35:024] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.35:024] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.35:210] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.19.35:211] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.19.35:637] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.19.35:637] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.19.39:206] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 1
+[2023.06.29-13.19.39:206] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 1
+[2023.06.29-13.19.39:206] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.39:207] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.39:207] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.39:207] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.39:871] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.19.39:871] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.19.39:871] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.19.39:872] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.19.39:872] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.19.39:889] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=1, TabId=0]
+[2023.06.29-13.19.39:889] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.19.39:906] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 1
+[2023.06.29-13.19.39:906] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.19.39:906] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.39:922] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.19.40:126] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=1, TabId=0]
+[2023.06.29-13.19.40:349] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-w_y3uFqzekanltcsA0ULrQ]
+[2023.06.29-13.19.40:349] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.19.40:350] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.19.40:376] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.19.40:376] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.19.40:377] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.19.40:377] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.19.40:378] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.19.40:399] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=2]
+[2023.06.29-13.19.40:399] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 2
+[2023.06.29-13.19.40:399] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.19.40:400] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.40:400] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.19.40:400] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.19.40:401] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.19.40:401] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.19.40:402] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.40:422] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.19.41:055] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.41:107] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=2, TabId=0, Previous=0000000000000000, New=0000000040001C02]
+[2023.06.29-13.19.41:108] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.19.41:720] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 2
+[2023.06.29-13.19.41:721] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.41:721] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.41:721] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.43:023] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 2
+[2023.06.29-13.19.43:023] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 2
+[2023.06.29-13.19.43:023] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.43:024] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.43:024] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.43:024] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.44:504] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 2
+[2023.06.29-13.19.44:505] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 2
+[2023.06.29-13.19.44:505] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.44:505] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.44:506] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.44:506] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.52:371] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 2
+[2023.06.29-13.19.52:371] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=2, TabId=0]
+[2023.06.29-13.19.52:371] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 3
+[2023.06.29-13.19.52:371] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Canceled
+[2023.06.29-13.19.52:371] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Canceled because the overlay browser was closed
+[2023.06.29-13.19.52:372] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay failed: EOS_Canceled
+[2023.06.29-13.19.52:372] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received EOS_Canceled
+[2023.06.29-13.19.52:372] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.19.52:373] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.52:389] [EOS SDK] Login Complete - User ID: NULL
+[2023.06.29-13.19.52:389]  - Login Mode: 4
+[2023.06.29-13.19.52:390] [EOS SDK] Login Failed - Error Code: EOS_Canceled
+[2023.06.29-13.19.52:390] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.19.52:391] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.19.52:602] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=2, TabId=0]
+[2023.06.29-13.19.57:133] [EOS SDK] Logging In with Account Portal
+[2023.06.29-13.19.57:134] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay can be used with this login type
+[2023.06.29-13.19.57:134] [EOS SDK] LogEOS: FWindowsDesktopCrossplay::GetSessionStartupInfo: Environment variable EOS_SESSION_STARTUPINFO is not set
+[2023.06.29-13.19.57:134] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay is not ready: EOS_DesktopCrossplay_ApplicationNotBootstrapped
+[2023.06.29-13.19.57:135] [EOS SDK] LogEOSAuth: BeginDesktopCrossplayLogin: Desktop crossplay is not required for login
+[2023.06.29-13.19.57:469] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.19.57:481] [EOS SDK] LogEOSAuth: GenerateUserAuthByDeviceCode: Received FUserAuthToken
+[2023.06.29-13.19.57:497] [EOS SDK] LogEOSAuth: UserAuthGenerated: Device auth to be continued at: <Redacted>
+[2023.06.29-13.19.57:498] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.19.57:498] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.19.57:499] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.19.57:499] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.19.57:533] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=3]
+[2023.06.29-13.19.57:533] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.19.57:533] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.19.57:534] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.19.57:534] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.19.57:535] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.19.57:535] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.19.57:535] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.19.57:536] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.19.57:553] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.19.58:505] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.19.58:551] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=3, TabId=0, Previous=0000000000000000, New=00000000C0000CC2]
+[2023.06.29-13.19.58:551] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.19.59:176] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.19.59:176] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.19.59:177] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.19.59:177] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.00:776] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.00:777] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.00:777] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.00:777] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.00:778] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.00:778] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.04:146] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.04:146] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.04:147] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.04:147] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.04:147] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.04:147] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.05:871] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.05:887] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.05:887] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.05:887] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.05:888] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.05:904] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.05:904] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.05:951] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.05:982] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.05:982] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.05:983] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.05:983] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.13:345] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.13:345] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.13:345] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.13:346] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.13:346] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.13:346] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.13:347] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.13:347] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.13:362] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.14:946] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.14:961] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.14:961] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.14:962] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.14:962] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.14:963] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.14:963] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.14:963] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.14:964] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.16:186] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.16:186] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.16:186] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.16:186] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.16:187] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.16:187] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.20:992] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.20:992] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.20:992] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.20:993] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.20:993] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.20:993] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.25:439] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 3
+[2023.06.29-13.20.25:439] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 3
+[2023.06.29-13.20.25:439] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.25:440] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.25:440] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.25:440] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.26:105] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.20.26:106] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.20.26:106] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.20.26:106] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.20.26:107] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.20.26:121] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=3, TabId=0]
+[2023.06.29-13.20.26:121] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.26:139] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 3
+[2023.06.29-13.20.26:139] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.26:139] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.26:155] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.20.26:367] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=3, TabId=0]
+[2023.06.29-13.20.26:485] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-76fkVpjlhkeuAhNFZxozgA]
+[2023.06.29-13.20.26:485] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.20.26:485] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.20.26:514] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.20.26:514] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.20.26:515] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.20.26:515] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.20.26:515] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.20.26:555] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=4]
+[2023.06.29-13.20.26:555] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 4
+[2023.06.29-13.20.26:556] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.20.26:556] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.26:556] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.20.26:557] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.20.26:557] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.20.26:557] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.20.26:558] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.26:574] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.20.27:200] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.27:257] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=4, TabId=0, Previous=0000000000000000, New=00000000800035C2]
+[2023.06.29-13.20.27:257] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.20.27:867] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 4
+[2023.06.29-13.20.27:867] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.27:868] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.27:868] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.29:866] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 4
+[2023.06.29-13.20.29:866] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 4
+[2023.06.29-13.20.29:867] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.29:867] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.29:867] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.29:868] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.32:570] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 4
+[2023.06.29-13.20.32:570] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 4
+[2023.06.29-13.20.32:570] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.32:571] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.32:571] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.32:571] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.33:830] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.20.38:986] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 4
+[2023.06.29-13.20.38:986] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 4
+[2023.06.29-13.20.38:987] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.38:987] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.38:987] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.38:988] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.39:679] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.20.39:679] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.20.39:679] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.20.39:680] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.20.39:680] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.20.39:681] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.20.39:698] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=4, TabId=0]
+[2023.06.29-13.20.39:699] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.39:715] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 4
+[2023.06.29-13.20.39:716] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.39:716] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.39:732] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.20.39:941] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=4, TabId=0]
+[2023.06.29-13.20.40:084] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-Tb9g3Om7YEmHsVglm_D5Ww]
+[2023.06.29-13.20.40:085] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.20.40:085] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.20.40:112] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.20.40:113] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.20.40:113] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.20.40:113] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.20.40:114] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.20.40:132] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=5]
+[2023.06.29-13.20.40:132] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.20.40:132] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.20.40:132] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.20.40:132] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.20.40:133] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.20.40:158] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.20.40:158] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 5
+[2023.06.29-13.20.40:159] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.40:159] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.40:799] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.40:853] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=5, TabId=0, Previous=0000000000000000, New=00000000C0002D02]
+[2023.06.29-13.20.40:853] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.20.41:465] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 5
+[2023.06.29-13.20.41:465] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.41:465] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.41:466] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.44:310] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 5
+[2023.06.29-13.20.44:311] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 5
+[2023.06.29-13.20.44:311] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.44:311] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.44:311] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.44:312] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.46:106] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 5
+[2023.06.29-13.20.46:107] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 5
+[2023.06.29-13.20.46:107] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.46:107] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.46:107] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.46:108] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.49:987] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 5
+[2023.06.29-13.20.49:987] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 5
+[2023.06.29-13.20.49:987] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.49:988] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.49:988] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.49:988] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.51:493] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.20.51:494] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.20.51:494] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.20.51:494] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.20.51:495] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.20.51:495] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.20.51:510] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=5, TabId=0]
+[2023.06.29-13.20.51:510] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.51:528] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 5
+[2023.06.29-13.20.51:529] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.20.51:529] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.51:545] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.20.51:758] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=5, TabId=0]
+[2023.06.29-13.20.51:883] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-vuVNRUORy0apAuMe7XgLXg]
+[2023.06.29-13.20.51:884] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.20.51:884] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.20.51:913] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.20.51:913] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.20.51:914] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.20.51:914] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.20.51:914] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.20.51:936] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=6]
+[2023.06.29-13.20.51:936] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 6
+[2023.06.29-13.20.51:936] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.20.51:937] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.51:937] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.20.51:937] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.20.51:938] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.20.51:938] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.20.51:939] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.51:958] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.20.52:374] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.20.52:375] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.20.52:895] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.20.52:962] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=6, TabId=0, Previous=0000000000000000, New=0000000080001EC2]
+[2023.06.29-13.20.52:962] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.20.54:137] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 6
+[2023.06.29-13.20.54:138] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.54:138] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.20.54:138] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.55:782] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 6
+[2023.06.29-13.20.55:782] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 6
+[2023.06.29-13.20.55:782] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.55:783] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.55:783] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.55:783] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.58:215] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 6
+[2023.06.29-13.20.58:215] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 6
+[2023.06.29-13.20.58:215] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.20.58:216] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.20.58:216] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.20.58:216] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.09:594] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 6
+[2023.06.29-13.21.09:594] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 6
+[2023.06.29-13.21.09:595] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.21.09:595] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.21.09:595] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.09:596] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.10:268] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.21.10:268] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.21.10:269] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.21.10:269] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.21.10:270] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.21.10:270] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.21.10:288] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=6, TabId=0]
+[2023.06.29-13.21.10:289] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.21.10:320] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 6
+[2023.06.29-13.21.10:320] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.21.10:321] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.10:334] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.21.10:524] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=6, TabId=0]
+[2023.06.29-13.21.10:633] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-gpP0Ll4Br0CYvVBgTJZhlw]
+[2023.06.29-13.21.10:633] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.21.10:634] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.21.10:666] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.21.10:666] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.21.10:666] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.21.10:667] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.21.10:667] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.21.10:703] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=7]
+[2023.06.29-13.21.10:703] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 7
+[2023.06.29-13.21.10:704] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.21.10:704] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.21.10:705] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.21.10:705] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.21.10:706] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.21.10:706] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.21.10:707] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.10:724] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.21.11:743] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.21.11:811] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=7, TabId=0, Previous=0000000000000000, New=00000000400000C2]
+[2023.06.29-13.21.11:811] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.21.12:418] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 7
+[2023.06.29-13.21.12:419] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.21.12:419] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.21.12:419] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.14:033] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 7
+[2023.06.29-13.21.14:034] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 7
+[2023.06.29-13.21.14:034] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.21.14:034] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.21.14:034] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.14:034] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.15:506] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 7
+[2023.06.29-13.21.15:506] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 7
+[2023.06.29-13.21.15:507] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.21.15:507] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.21.15:507] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.21.15:508] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.22.34:547] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.24.15:338] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 342.730988
+[2023.06.29-13.24.18:621] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.24.18:634] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.24.18:635] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 346.014008, Update Interval: 349.646912
+[2023.06.29-13.24.32:978] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.24.50:459] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 7
+[2023.06.29-13.24.50:459] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 7
+[2023.06.29-13.24.50:459] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.24.50:460] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.24.50:460] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.50:460] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.51:177] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.24.51:177] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.24.51:177] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.24.51:178] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.24.51:178] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.24.51:178] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.24.51:196] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=7, TabId=0]
+[2023.06.29-13.24.51:197] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.24.51:227] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 7
+[2023.06.29-13.24.51:227] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.24.51:227] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.51:240] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.24.51:432] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=7, TabId=0]
+[2023.06.29-13.24.51:566] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-zHPmqn3z8EO9kF4o0oylqw]
+[2023.06.29-13.24.51:566] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.24.51:567] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.24.51:596] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.24.51:597] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.24.51:597] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.24.51:598] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.24.51:598] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.24.51:617] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=8]
+[2023.06.29-13.24.51:617] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 8
+[2023.06.29-13.24.51:617] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.24.51:618] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.24.51:618] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.24.51:618] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.24.51:619] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.24.51:619] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.51:636] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.24.51:637] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.24.52:340] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.24.52:392] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=8, TabId=0, Previous=0000000000000000, New=0000000080003682]
+[2023.06.29-13.24.52:392] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.24.54:886] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 8
+[2023.06.29-13.24.54:887] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.24.54:887] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.24.54:887] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.57:127] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 8
+[2023.06.29-13.24.57:128] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 8
+[2023.06.29-13.24.57:128] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.24.57:129] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.24.57:129] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.24.57:129] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 8
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 8
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.05:633] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.06:645] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.25.06:646] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.25.06:646] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.25.06:646] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.25.06:647] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.25.06:647] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.25.06:663] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=8, TabId=0]
+[2023.06.29-13.25.06:663] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.06:678] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 8
+[2023.06.29-13.25.06:678] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.06:678] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.06:691] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.25.06:901] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=8, TabId=0]
+[2023.06.29-13.25.07:046] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-k0wfgYlxWkeRcSYldZAHVw]
+[2023.06.29-13.25.07:046] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.25.07:047] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.25.07:073] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.25.07:073] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.25.07:074] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.25.07:074] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.25.07:074] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.25.07:102] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=9]
+[2023.06.29-13.25.07:102] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 9
+[2023.06.29-13.25.07:102] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.25.07:103] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.07:103] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.25.07:104] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.25.07:104] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.25.07:104] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.25.07:105] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.07:119] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.25.07:793] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.25.07:846] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=9, TabId=0, Previous=0000000000000000, New=0000000080000302]
+[2023.06.29-13.25.07:847] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.25.08:459] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 9
+[2023.06.29-13.25.08:460] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.08:460] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.25.08:460] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.11:913] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 9
+[2023.06.29-13.25.11:913] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 9
+[2023.06.29-13.25.11:913] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.11:914] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.11:914] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.11:914] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.15:269] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 9
+[2023.06.29-13.25.15:269] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 9
+[2023.06.29-13.25.15:269] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.15:270] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.15:271] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.15:271] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.18:633] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.25.22:127] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 9
+[2023.06.29-13.25.22:128] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 9
+[2023.06.29-13.25.22:128] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.22:128] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.22:128] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.22:129] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.23:148] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.25.23:149] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.25.23:149] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.25.23:149] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.25.23:150] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.25.23:150] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.25.23:175] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=9, TabId=0]
+[2023.06.29-13.25.23:176] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.23:192] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 9
+[2023.06.29-13.25.23:193] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.23:193] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.23:218] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.25.23:426] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=9, TabId=0]
+[2023.06.29-13.25.23:535] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-le7gyWJfFE6QU3UtuHSlcA]
+[2023.06.29-13.25.23:535] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.25.23:535] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.25.23:569] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.25.23:570] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.25.23:570] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.25.23:570] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.25.23:570] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.25.23:591] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=10]
+[2023.06.29-13.25.23:592] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 10
+[2023.06.29-13.25.23:592] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.25.23:592] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.23:593] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.25.23:593] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.25.23:593] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.25.23:594] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.25.23:594] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.23:619] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.25.24:281] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.25.24:328] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=10, TabId=0, Previous=0000000000000000, New=00000000400022C2]
+[2023.06.29-13.25.24:328] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.25.24:941] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 10
+[2023.06.29-13.25.24:941] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.24:942] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.25.24:942] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.27:860] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 10
+[2023.06.29-13.25.27:860] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 10
+[2023.06.29-13.25.27:860] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.27:861] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.27:861] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.27:861] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.29:773] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 10
+[2023.06.29-13.25.29:773] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 10
+[2023.06.29-13.25.29:773] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.29:774] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.29:774] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.29:774] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.41:381] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 10
+[2023.06.29-13.25.41:381] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 10
+[2023.06.29-13.25.41:381] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.41:382] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.41:382] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.41:382] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.42:447] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.25.42:447] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.25.42:448] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.25.42:448] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.25.42:448] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.25.42:449] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.25.42:463] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=10, TabId=0]
+[2023.06.29-13.25.42:464] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.42:503] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 10
+[2023.06.29-13.25.42:504] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.42:504] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.42:520] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.25.42:703] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=10, TabId=0]
+[2023.06.29-13.25.42:834] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-3haBWmQuP0aYrCo9Kd5iGg]
+[2023.06.29-13.25.42:835] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.25.42:835] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.25.42:860] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.25.42:861] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.25.42:861] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.25.42:861] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.25.42:861] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.25.42:891] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=11]
+[2023.06.29-13.25.42:891] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 11
+[2023.06.29-13.25.42:892] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.25.42:892] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.42:892] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.25.42:892] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.25.42:893] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.25.42:893] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.25.42:893] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.42:907] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.25.44:140] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.25.44:194] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=11, TabId=0, Previous=0000000000000000, New=0000000040003382]
+[2023.06.29-13.25.44:194] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.25.44:807] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 11
+[2023.06.29-13.25.44:807] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.44:807] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.25.44:808] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.48:594] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 11
+[2023.06.29-13.25.48:596] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 11
+[2023.06.29-13.25.48:596] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.48:596] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.48:597] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.48:597] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.51:437] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 11
+[2023.06.29-13.25.51:438] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 11
+[2023.06.29-13.25.51:438] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.51:438] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.51:439] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.51:439] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.58:554] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 11
+[2023.06.29-13.25.58:555] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 11
+[2023.06.29-13.25.58:555] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.58:555] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.25.58:555] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.58:556] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.59:248] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.25.59:249] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.25.59:249] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.25.59:249] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.25.59:250] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.25.59:250] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.25.59:263] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=11, TabId=0]
+[2023.06.29-13.25.59:264] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.59:279] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 11
+[2023.06.29-13.25.59:280] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.25.59:280] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.59:295] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.25.59:514] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=11, TabId=0]
+[2023.06.29-13.25.59:635] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-VjIqK7gWMkO0bBXwwtNO9Q]
+[2023.06.29-13.25.59:635] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.25.59:635] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.25.59:662] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.25.59:662] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.25.59:662] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.25.59:663] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.25.59:663] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.25.59:679] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=12]
+[2023.06.29-13.25.59:679] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 12
+[2023.06.29-13.25.59:679] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.25.59:680] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.25.59:680] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.25.59:680] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.25.59:681] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.25.59:681] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.25.59:682] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.25.59:699] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.26.00:368] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.26.00:421] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=12, TabId=0, Previous=0000000000000000, New=00000000C0003402]
+[2023.06.29-13.26.00:421] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.26.01:035] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 12
+[2023.06.29-13.26.01:035] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.01:035] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.26.01:036] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.03:368] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 12
+[2023.06.29-13.26.03:368] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 12
+[2023.06.29-13.26.03:369] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.03:369] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.03:369] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.03:370] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.05:288] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 12
+[2023.06.29-13.26.05:288] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 12
+[2023.06.29-13.26.05:288] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.05:289] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.05:289] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.05:289] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.17:122] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 12
+[2023.06.29-13.26.17:122] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 12
+[2023.06.29-13.26.17:123] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.17:123] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.17:123] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.17:124] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.17:836] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.26.17:837] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.26.17:837] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.26.17:837] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.26.17:838] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.26.17:838] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.26.17:858] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=12, TabId=0]
+[2023.06.29-13.26.17:858] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.17:899] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 12
+[2023.06.29-13.26.17:899] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.17:899] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.17:911] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.26.18:102] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=12, TabId=0]
+[2023.06.29-13.26.18:236] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-6oJ5LhVlqUy1XQXwlD6v4Q]
+[2023.06.29-13.26.18:237] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.26.18:237] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.26.18:264] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.26.18:264] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.26.18:265] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.26.18:265] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.26.18:265] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.26.18:280] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=13]
+[2023.06.29-13.26.18:281] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.26.18:281] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.26.18:281] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.26.18:282] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.26.18:282] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.26.18:300] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.26.18:301] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 13
+[2023.06.29-13.26.18:301] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.18:301] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.18:991] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.26.19:303] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=13, TabId=0, Previous=0000000000000000, New=00000000C0002D02]
+[2023.06.29-13.26.19:304] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.26.19:652] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 13
+[2023.06.29-13.26.19:652] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.19:652] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.26.19:653] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 13
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 13
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.21:343] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.22:889] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 13
+[2023.06.29-13.26.22:889] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 13
+[2023.06.29-13.26.22:889] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.22:890] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.22:890] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.22:890] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 13
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 13
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.27:476] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.28:169] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.26.28:169] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.26.28:169] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.26.28:170] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.26.28:170] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.26.28:170] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.26.28:185] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=13, TabId=0]
+[2023.06.29-13.26.28:185] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.28:213] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 13
+[2023.06.29-13.26.28:214] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.28:214] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.28:226] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.26.28:449] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=13, TabId=0]
+[2023.06.29-13.26.28:543] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-Dj8iyclZDUSn8qWpUO6x9w]
+[2023.06.29-13.26.28:543] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.26.28:543] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.26.28:582] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.26.28:583] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.26.28:583] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.26.28:583] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.26.28:584] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.26.28:599] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=14]
+[2023.06.29-13.26.28:600] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 14
+[2023.06.29-13.26.28:600] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.26.28:600] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.28:601] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.26.28:601] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.26.28:601] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.26.28:602] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.26.28:602] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.28:621] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.26.29:302] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.26.29:355] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=14, TabId=0, Previous=0000000000000000, New=0000000040002C42]
+[2023.06.29-13.26.29:356] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.26.29:969] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 14
+[2023.06.29-13.26.29:969] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.29:970] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.26.29:970] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.33:036] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 14
+[2023.06.29-13.26.33:037] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 14
+[2023.06.29-13.26.33:037] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.33:037] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.33:037] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.33:038] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.34:916] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 14
+[2023.06.29-13.26.34:917] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 14
+[2023.06.29-13.26.34:917] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.34:917] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.34:918] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.34:918] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.39:450] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.26.53:850] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 14
+[2023.06.29-13.26.53:850] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 14
+[2023.06.29-13.26.53:851] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.53:851] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.53:851] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.53:852] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.54:970] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.26.54:970] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.26.54:971] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.26.54:971] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.26.54:971] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.26.54:972] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.26.54:987] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=14, TabId=0]
+[2023.06.29-13.26.54:987] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.55:002] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 14
+[2023.06.29-13.26.55:002] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.26.55:002] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.55:018] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.26.55:224] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=14, TabId=0]
+[2023.06.29-13.26.55:357] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-SVM3Gbm6nEqBHLfsv4kwcQ]
+[2023.06.29-13.26.55:358] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.26.55:358] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.26.55:385] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.26.55:385] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.26.55:385] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.26.55:386] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.26.55:386] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.26.55:416] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=15]
+[2023.06.29-13.26.55:416] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.26.55:416] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 15
+[2023.06.29-13.26.55:417] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.26.55:417] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.26.55:418] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.26.55:418] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.26.55:418] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.55:435] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.55:435] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.26.56:103] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.26.56:157] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=15, TabId=0, Previous=0000000000000000, New=00000000C0002482]
+[2023.06.29-13.26.56:157] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.26.56:770] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 15
+[2023.06.29-13.26.56:770] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.56:771] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.26.56:771] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.59:690] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 15
+[2023.06.29-13.26.59:691] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 15
+[2023.06.29-13.26.59:691] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.26.59:691] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.26.59:692] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.26.59:692] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.27.01:611] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 15
+[2023.06.29-13.27.01:611] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 15
+[2023.06.29-13.27.01:611] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.27.01:611] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.27.01:612] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.27.01:612] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.28.37:441] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.30.10:576] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 697.969482
+[2023.06.29-13.30.14:924] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.30.14:938] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.30.14:939] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 702.318054, Update Interval: 342.331604
+[2023.06.29-13.30.33:889] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.31.14:927] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.32.32:384] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 15
+[2023.06.29-13.32.32:384] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 15
+[2023.06.29-13.32.32:384] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.32.32:385] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.32.32:385] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.32:385] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.36:809] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::completeScopeConsentLogin: Received
+[2023.06.29-13.32.36:809] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Success
+[2023.06.29-13.32.36:810] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Overlay returned success
+[2023.06.29-13.32.36:810] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay succeeded without an auth code; falling back to continuation token
+[2023.06.29-13.32.36:810] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.ExecuteJavascriptFunction <Redacted>
+[2023.06.29-13.32.36:811] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.InvokeJavascriptCallback <Redacted>
+[2023.06.29-13.32.36:827] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=15, TabId=0]
+[2023.06.29-13.32.36:828] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.32.36:841] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 15
+[2023.06.29-13.32.36:842] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-13.32.36:842] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.36:855] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-13.32.37:077] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=15, TabId=0]
+[2023.06.29-13.32.39:783] [EOS SDK] LogEOS: Error response received from backend. ServiceName=[OAuth], OperationName=[TokenGrantv2], Url=[<Redacted>], HttpStatus=[400], ErrorCode=[errors.com.epicgames.oauth.corrective_action_required], NumericErrorCode=[18206], ErrorMessage=[Corrective action is required to continue.], CorrId=[EOS-g035QAGmH0SUT8tQiv7GAg-5atFiGUp8UizDGvrU3xBEA-CFHJTTmVa0yAo-6BRqsrOA]
+[2023.06.29-13.32.39:784] [EOS SDK] LogEOSAuth: FTokenGrantRequestTask: Received ResultCode: EOS_Auth_CorrectiveActionRequired
+[2023.06.29-13.32.39:784] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.32.39:812] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received FCorrectiveActionRequired ContinuationUrl=<Redacted> ContinuationToken=<Redacted>
+[2023.06.29-13.32.39:813] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Launching with overlay: <Redacted>
+[2023.06.29-13.32.39:813] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Formed overlay request: <Redacted>
+[2023.06.29-13.32.39:814] [EOS SDK] LogEOSOverlay: Overlay loading <Redacted> in instance 2830983509248
+[2023.06.29-13.32.39:814] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.LoadURL <Redacted>
+[2023.06.29-13.32.39:843] [EOS SDK] LogEOSOverlay: LoadURL result received. [Success=1, BrowserID=16]
+[2023.06.29-13.32.39:843] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 16
+[2023.06.29-13.32.39:843] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Load: 0
+[2023.06.29-13.32.39:843] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.32.39:843] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.LoadURL <Redacted>
+[2023.06.29-13.32.39:844] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.LoadURLResult <Redacted>
+[2023.06.29-13.32.39:845] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.BrowserCreated <Redacted>
+[2023.06.29-13.32.39:845] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.ConnectBrowserAndRenderProcesses <Redacted>
+[2023.06.29-13.32.39:845] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.39:861] [EOS SDK] Overlay Display Settings Updated: Visible(TRUE) ExclusiveInput(TRUE)
+[2023.06.29-13.32.41:090] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.JavascriptContextCreated <Redacted>
+[2023.06.29-13.32.41:143] [EOS SDK] LogEOSOverlay: Received new texture handle. [Type=0, InstanceId=2830983509248, BrowserId=16, TabId=0, Previous=0000000000000000, New=00000000C00011C2]
+[2023.06.29-13.32.41:144] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.InitialTextureReceived <Redacted>
+[2023.06.29-13.32.41:769] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 16
+[2023.06.29-13.32.41:770] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.32.41:770] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.RenderProcess.FrameLoadEnd <Redacted>
+[2023.06.29-13.32.41:770] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.48:357] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 16
+[2023.06.29-13.32.48:358] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 16
+[2023.06.29-13.32.48:358] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.32.48:358] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.32.48:359] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.48:359] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.57:677] [EOS SDK] LogEOSOverlay: Browser status 0 received for browser 16
+[2023.06.29-13.32.57:678] [EOS SDK] LogEOSOverlay: Browser status 1 received for browser 16
+[2023.06.29-13.32.57:678] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 0
+[2023.06.29-13.32.57:678] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 1
+[2023.06.29-13.32.57:678] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.32.57:678] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-13.33.19:958] [EOS SDK] LogHttp: 000002932D393880: HTTP request timed out after 30.00 seconds URL=https://api.epicgames.dev/datarouter/api/v1/public/data/clients?AppID=b497b175330445f2a3e22406b0c2db1c&AppVersion=1.15.5-24099393&AppEnvironment=9da644c89986480bb372c371c8ff4641&UploadType=eteventstream&SessionID=EFD89DC444F74CD4591B4FB3E1C77182
+[2023.06.29-13.33.19:959] [EOS SDK] LogHttp: 000002932D393880: request failed, libcurl error: 0 (No error)
+[2023.06.29-13.33.19:959] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 0 (Found bundle for host api.epicgames.dev: 0x2932d31c870 [can pipeline])
+[2023.06.29-13.33.19:960] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 1 (Hostname in DNS cache was stale, zapped)
+[2023.06.29-13.33.19:960] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 2 (  Trying 3.219.235.213...)
+[2023.06.29-13.33.19:960] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 3 (TCP_NODELAY set)
+[2023.06.29-13.33.19:961] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 4 (Connected to api.epicgames.dev (3.219.235.213) port 443 (#8))
+[2023.06.29-13.33.19:961] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 5 (ALPN, offering http/1.1)
+[2023.06.29-13.33.19:961] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 6 (Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH)
+[2023.06.29-13.33.19:962] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 7 (SSL re-using session ID)
+[2023.06.29-13.33.19:962] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 8 (TLSv1.3 (OUT), TLS handshake, Client hello (1):)
+[2023.06.29-13.33.19:962] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 9 (TLSv1.3 (IN), TLS handshake, Server hello (2):)
+[2023.06.29-13.33.19:963] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 10 (TLSv1.2 (IN), TLS handshake, Certificate (11):)
+[2023.06.29-13.33.19:963] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 11 (TLSv1.2 (IN), TLS handshake, Server key exchange (12):)
+[2023.06.29-13.33.19:963] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 12 (TLSv1.2 (IN), TLS handshake, Server finished (14):)
+[2023.06.29-13.33.19:964] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 13 (TLSv1.2 (OUT), TLS handshake, Client key exchange (16):)
+[2023.06.29-13.33.19:964] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 14 (TLSv1.2 (OUT), TLS change cipher, Client hello (1):)
+[2023.06.29-13.33.19:964] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 15 (TLSv1.2 (OUT), TLS handshake, Finished (20):)
+[2023.06.29-13.33.19:965] [EOS SDK] LogHttp: 000002932D393880: libcurl info message cache 16 (Closing connection 8)
+[2023.06.29-13.33.19:965] [EOS SDK] LogHttp: Retry exhausted on https://api.epicgames.dev/datarouter/api/v1/public/data/clients?AppID=b497b175330445f2a3e22406b0c2db1c&AppVersion=1.15.5-24099393&AppEnvironment=9da644c89986480bb372c371c8ff4641&UploadType=eteventstream&SessionID=EFD89DC444F74CD4591B4FB3E1C77182
+[2023.06.29-13.33.19:966] [EOS SDK] LogEOS: Failed to connect to the backend. ServiceName=[Metrics], OperationName=[SendBackendEvent], Url=[<Redacted>]
+[2023.06.29-13.33.19:966] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.34.33:031] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.36.03:591] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 1050.987305
+[2023.06.29-13.36.06:138] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.36.06:151] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.36.06:152] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1053.534180, Update Interval: 323.875854
+[2023.06.29-13.36.33:020] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.37.06:140] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.38.34:978] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.40.36:565] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.41.41:763] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 1389.160522
+[2023.06.29-13.41.45:416] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.41.45:431] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.41.45:431] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1392.812378, Update Interval: 305.943787
+[2023.06.29-13.42.33:023] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.42.45:421] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.44.34:063] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.46.39:802] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.47.15:950] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 1723.318726
+[2023.06.29-13.47.17:496] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.47.17:510] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.47.17:510] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1724.864868, Update Interval: 354.285095
+[2023.06.29-13.48.17:499] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.48.36:720] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.50.43:549] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.52.35:272] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.54.02:635] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 2130.014160
+[2023.06.29-13.54.37:239] [EOS SDK] LogHttp: 000002932D390A00: HTTP request timed out after 30.00 seconds URL=https://api.epicgames.dev/sdk/v1/product/b497b175330445f2a3e22406b0c2db1c?platformId=WIN&deploymentId=e8ed47f3b597470285e17c369123b83e
+[2023.06.29-13.54.37:239] [EOS SDK] LogHttp: 000002932D390A00: request failed, libcurl error: 0 (No error)
+[2023.06.29-13.54.37:240] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 0 (Connection 20 seems to be dead!)
+[2023.06.29-13.54.37:240] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 1 (Closing connection 20)
+[2023.06.29-13.54.37:240] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 2 (TLSv1.2 (OUT), TLS alert, Client hello (1):)
+[2023.06.29-13.54.37:241] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 3 (  Trying 34.236.193.200...)
+[2023.06.29-13.54.37:241] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 4 (TCP_NODELAY set)
+[2023.06.29-13.54.37:242] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 5 (Connected to api.epicgames.dev (34.236.193.200) port 443 (#21))
+[2023.06.29-13.54.37:242] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 6 (ALPN, offering http/1.1)
+[2023.06.29-13.54.37:242] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 7 (Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH)
+[2023.06.29-13.54.37:243] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 8 (SSL re-using session ID)
+[2023.06.29-13.54.37:243] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 9 (TLSv1.3 (OUT), TLS handshake, Client hello (1):)
+[2023.06.29-13.54.37:243] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 10 (TLSv1.3 (IN), TLS handshake, Server hello (2):)
+[2023.06.29-13.54.37:244] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 11 (TLSv1.2 (IN), TLS handshake, Certificate (11):)
+[2023.06.29-13.54.37:244] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 12 (TLSv1.2 (IN), TLS handshake, Server key exchange (12):)
+[2023.06.29-13.54.37:245] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 13 (TLSv1.2 (IN), TLS handshake, Server finished (14):)
+[2023.06.29-13.54.37:245] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 14 (TLSv1.2 (OUT), TLS handshake, Client key exchange (16):)
+[2023.06.29-13.54.37:245] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 15 (TLSv1.2 (OUT), TLS change cipher, Client hello (1):)
+[2023.06.29-13.54.37:246] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 16 (TLSv1.2 (OUT), TLS handshake, Finished (20):)
+[2023.06.29-13.54.37:246] [EOS SDK] LogHttp: 000002932D390A00: libcurl info message cache 17 (Closing connection 21)
+[2023.06.29-13.54.37:246] [EOS SDK] LogHttp: Lockout of 2.078127s on https://api.epicgames.dev/sdk/v1/product/b497b175330445f2a3e22406b0c2db1c?platformId=WIN&deploymentId=e8ed47f3b597470285e17c369123b83e
+[2023.06.29-13.54.37:247] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Retry <Redacted>
+[2023.06.29-13.54.39:326] [EOS SDK] LogHttp: Retry 1 on https://api.epicgames.dev/sdk/v1/product/b497b175330445f2a3e22406b0c2db1c?platformId=WIN&deploymentId=e8ed47f3b597470285e17c369123b83e
+[2023.06.29-13.54.41:167] [EOS SDK] LogHttp: Success on https://api.epicgames.dev/sdk/v1/product/b497b175330445f2a3e22406b0c2db1c?platformId=WIN&deploymentId=e8ed47f3b597470285e17c369123b83e
+[2023.06.29-13.54.41:167] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.54.41:187] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-13.54.41:187] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2168.561768, Update Interval: 346.444275
+[2023.06.29-13.55.12:648] [EOS SDK] LogHttp: 000002932D3915A0: HTTP request timed out after 30.00 seconds URL=https://api.epicgames.dev/datarouter/api/v1/public/data/clients?AppID=b497b175330445f2a3e22406b0c2db1c&AppVersion=1.15.5-24099393&AppEnvironment=9da644c89986480bb372c371c8ff4641&UploadType=eteventstream&SessionID=EFD89DC444F74CD4591B4FB3E1C77182
+[2023.06.29-13.55.12:649] [EOS SDK] LogHttp: 000002932D3915A0: request failed, libcurl error: 0 (No error)
+[2023.06.29-13.55.12:649] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 0 (Found bundle for host api.epicgames.dev: 0x2932d6540c0 [serially])
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 1 (Hostname api.epicgames.dev was found in DNS cache)
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 2 (  Trying 34.236.193.200...)
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 3 (TCP_NODELAY set)
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 4 (Connected to api.epicgames.dev (34.236.193.200) port 443 (#22))
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 5 (ALPN, offering http/1.1)
+[2023.06.29-13.55.12:650] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 6 (Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH)
+[2023.06.29-13.55.12:651] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 7 (SSL re-using session ID)
+[2023.06.29-13.55.12:651] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 8 (TLSv1.3 (OUT), TLS handshake, Client hello (1):)
+[2023.06.29-13.55.12:651] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 9 (TLSv1.3 (IN), TLS handshake, Server hello (2):)
+[2023.06.29-13.55.12:652] [EOS SDK] LogHttp: 000002932D3915A0: libcurl info message cache 10 (Closing connection 22)
+[2023.06.29-13.55.12:652] [EOS SDK] LogHttp: Retry exhausted on https://api.epicgames.dev/datarouter/api/v1/public/data/clients?AppID=b497b175330445f2a3e22406b0c2db1c&AppVersion=1.15.5-24099393&AppEnvironment=9da644c89986480bb372c371c8ff4641&UploadType=eteventstream&SessionID=EFD89DC444F74CD4591B4FB3E1C77182
+[2023.06.29-13.55.12:653] [EOS SDK] LogEOS: Failed to connect to the backend. ServiceName=[Metrics], OperationName=[SendBackendEvent], Url=[<Redacted>]
+[2023.06.29-13.55.12:653] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.55.37:249] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-13.56.34:650] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-13.58.37:602] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.00.39:677] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.01.04:568] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 2552.336426
+[2023.06.29-14.01.11:808] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.01.11:822] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-14.01.11:822] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2559.584473, Update Interval: 333.578918
+[2023.06.29-14.02.11:810] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.02.34:068] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.04.34:095] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.06.34:020] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.07.16:360] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 2924.370117
+[2023.06.29-14.07.17:675] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.07.17:689] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-14.07.17:689] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 2925.687500, Update Interval: 316.628326
+[2023.06.29-14.08.17:678] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.08.33:079] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.10.35:956] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.12.35:714] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.13.19:493] [EOS SDK] LogEOS: Updating Product SDK Config, Time: 3287.643066
+[2023.06.29-14.13.20:880] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.13.20:893] [EOS SDK] LogEOS: SDK Config Product Update Request Completed - No Change
+[2023.06.29-14.13.20:893] [EOS SDK] LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 3289.030762, Update Interval: 322.507996
+[2023.06.29-14.14.20:882] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.14.33:736] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.16.34:286] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.17.05:098] [EOS SDK] LogEOSAnalytics: Record Event: EOSSDK.HTTP.Complete <Redacted>
+[2023.06.29-14.17.05:111] [EOS SDK] LogEOSConnect: ConnectClientAuthTask Success
+[2023.06.29-14.17.33:799] [EOS SDK] LogEOSOverlay: Browser status 3 received for browser 16
+[2023.06.29-14.17.33:800] [EOS SDK] LogEOSOverlay: Closing browser [InstanceId=2830983509248, BrowserId=16, TabId=0]
+[2023.06.29-14.17.33:800] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::Login: Status: 3
+[2023.06.29-14.17.33:800] [EOS SDK] LogEOSAuth: FAccountPortalBrowserManager::FAccountPortalBrowserStateData::Finish: [Login] Finishing with result: EOS_Canceled
+[2023.06.29-14.17.33:801] [EOS SDK] LogEOSAuth: LaunchAccountPortalWithOverlay: Canceled because the overlay browser was closed
+[2023.06.29-14.17.33:801] [EOS SDK] LogEOSAuth: UserAuthGenerated: Account Portal overlay failed: EOS_Canceled
+[2023.06.29-14.17.33:801] [EOS SDK] LogEOSAuth: UserAuthGenerated: Received EOS_Canceled
+[2023.06.29-14.17.33:801] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-14.17.33:802] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.MessageHandler.BrowserStatus <Redacted>
+[2023.06.29-14.17.33:816] [EOS SDK] Login Complete - User ID: NULL
+[2023.06.29-14.17.33:817]  - Login Mode: 4
+[2023.06.29-14.17.33:817] [EOS SDK] Login Failed - Error Code: EOS_Canceled
+[2023.06.29-14.17.33:818] [EOS SDK] Overlay Display Settings Updated: Visible(FALSE) ExclusiveInput(FALSE)
+[2023.06.29-14.17.33:818] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.CloseBrowser <Redacted>
+[2023.06.29-14.17.34:046] [EOS SDK] LogEOSOverlay: Closing active browser [InstanceId=2830983509248, BrowserId=16, TabId=0]
+[2023.06.29-14.17.37:555] [EOS SDK] Shutting Down ...
+[2023.06.29-14.17.37:556] [EOS SDK] LogEOSRTC: LibRTCCore: Shutting down LibRTC...
+[2023.06.29-14.17.37:558] [EOS SDK] LogEOSAnalytics: Record Event: Overlay.ClientApi.EjectInstance <Redacted>
+[2023.06.29-14.17.37:570] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.17.37:570] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.17.37:570] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.17.37:571] [EOS SDK] LogEOSAnalytics: Record Event: UsageMetric <Redacted>
+[2023.06.29-14.17.40:092] [EOS SDK] LogHttp: 000002932D3915A0: request was cancelled
+[2023.06.29-14.17.40:093] [EOS SDK] LogHttp: 000002932D326DA0: request was cancelled
+[2023.06.29-14.17.40:126] [EOS SDK] Shutdown Complete

@@ -16,6 +16,10 @@ class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
 
+/** Player's Team */
+UENUM(BlueprintType)
+enum ETeam { Red, Blue };
+
 UCLASS(config=Game)
 class AGR2_ReworkCharacter : public ACharacter
 {
@@ -53,7 +57,7 @@ public:
 	AGR2_ReworkCharacter();
 
 protected:
-	virtual void BeginPlay();
+	virtual void BeginPlay() override;
 
 public:
 		
@@ -96,6 +100,18 @@ public:
 	void Multi_OnFireVFX();
 	void Multi_OnFireVFX_Implementation();
 
+	UFUNCTION(Server, Reliable)
+	void Server_PlaySoundAt(UTP_WeaponComponent* Utp_WeaponComponent, USoundBase* SoundBase, const FVector& Vector);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multi_PlaySoundAt(UTP_WeaponComponent* Utp_WeaponComponent, USoundBase* SoundBase, const FVector& Vector);
+
+	UFUNCTION(Server, Reliable)
+	void Server_SpawnMuzzleFlashFX(UTP_WeaponComponent* Utp_WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multi_SpawnMuzzleFlashFX(UTP_WeaponComponent* Utp_WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint);
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -131,7 +147,7 @@ public:
 	AGR2_ReworkWeapon* GetCurrentWeapon() const { return CurrentWeapon; }
 
 	/** Set Current Weapon */
-	void SetCurrentWeapon(AGR2_ReworkWeapon* Weapon) { CurrentWeapon = Weapon; };
+	void SetCurrentWeapon(AGR2_ReworkWeapon* Weapon) { CurrentWeapon = Weapon; }
 
 	/** Get Primary Weapon*/
 	AGR2_ReworkWeapon* GetWeapon1() const { return Weapon1; }
@@ -163,18 +179,21 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
 	UUserWidget* CharacterHUD;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* CurrentWeapon;
 
 	/** Current weapons of player */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon1;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon2;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Weapons")
+	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon3;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Team")
+	TEnumAsByte<ETeam> PlayerTeam;
 	
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnHealthUpdateUI();

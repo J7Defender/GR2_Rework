@@ -14,7 +14,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
-
 //////////////////////////////////////////////////////////////////////////
 // AGR2_ReworkCharacter
 
@@ -51,6 +50,11 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 
 	MaxHealth = 100.f;
 	CurrentHealth = MaxHealth;
+
+	if (Weapon1 != nullptr)
+	{
+		SetCurrentWeapon(Weapon1);
+	}
 }
 
 void AGR2_ReworkCharacter::BeginPlay()
@@ -59,7 +63,7 @@ void AGR2_ReworkCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	//Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	if (const APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
@@ -189,6 +193,63 @@ void AGR2_ReworkCharacter::Multi_OnFireVFX_Implementation()
 	
 }
 
+void AGR2_ReworkCharacter::Server_PlaySoundAt_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
+	USoundBase* SoundBase, const FVector& Vector)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
+	
+	Multi_PlaySoundAt(Utp_WeaponComponent, SoundBase, Vector);
+}
+
+void AGR2_ReworkCharacter::Multi_PlaySoundAt_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
+	USoundBase* SoundBase, const FVector& Vector)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"))
+
+	if (CurrentWeapon == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] CurrentWeapon: NULL Pointer"))
+	}
+
+	if (CurrentWeapon->WeaponComponent == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] WeaponComponent: NULL Pointer"))
+	}
+
+	if (CurrentWeapon->WeaponComponent->WeaponFXHandler == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] WeaponFXHandler: NULL Pointer"))
+	}
+
+	if (Utp_WeaponComponent == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Utp_WeaponComponent: NULL Pointer"))
+	}
+
+	if (SoundBase == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] SoundBase: NULL Pointer"))
+	}
+	
+	CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(Utp_WeaponComponent, SoundBase, Vector);
+}
+
+void AGR2_ReworkCharacter::Server_SpawnMuzzleFlashFX_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
+	AGR2_ReworkWeapon* WeaponBlueprint)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[SpawnMuzzleFlashFX] Call to Server"));
+	
+	Multi_SpawnMuzzleFlashFX(Utp_WeaponComponent, WeaponBlueprint);
+}
+
+void AGR2_ReworkCharacter::Multi_SpawnMuzzleFlashFX_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
+	AGR2_ReworkWeapon* WeaponBlueprint)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[SpawnMuzzleFlashFX] Multicast to Clients"))
+	
+	CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnMuzzleFlashFX(Utp_WeaponComponent, WeaponBlueprint);
+}
+
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
@@ -282,8 +343,6 @@ bool AGR2_ReworkCharacter::GetHasRifle()
 
 void AGR2_ReworkCharacter::DealDamage(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Call to Deal Damage Character"));
-	
 	Server_OnDealDamage(HitResult, Damage, HitFrom, DamageCauser);
 }
 
@@ -294,8 +353,6 @@ bool AGR2_ReworkCharacter::Server_OnDealDamage_Validate(FHitResult HitResult, in
 
 void AGR2_ReworkCharacter::Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Server Deal Damage from Character"));
-
 	UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), Damage, HitFrom, HitResult, DamageCauser->GetController(), DamageCauser, UDamageType::StaticClass());
 }
 
@@ -310,7 +367,8 @@ void AGR2_ReworkCharacter::OnCurrentWeaponSet_Implementation(AGR2_ReworkWeapon* 
 		CurrentWeapon->SetVisibility(true);
 	} else
 	{
+#if PLATFORM_WINDOWS
 		LOG("[Character][OnCurrentWeaponSet] Null CurrentWeapon");
-		return;
+#endif
 	}
 }

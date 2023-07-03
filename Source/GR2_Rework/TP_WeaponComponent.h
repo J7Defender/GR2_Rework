@@ -40,6 +40,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="BluePrint")
 	AGR2_ReworkWeapon* WeaponBlueprint;
 
+	/** Weapon FX Handler */
+	UTP_WeaponFXHandler* WeaponFXHandler;
+
 	/** Sets default values for this component's properties */
 	UTP_WeaponComponent();
 
@@ -53,7 +56,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void StopBurst();
-
+	
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();
@@ -70,9 +73,6 @@ protected:
 private:
 	/** The Character holding this weapon*/
 	AGR2_ReworkCharacter* Character;
-
-	/** Weapon FX Handler */
-	UTP_WeaponFXHandler* WeaponFXHandler;
 
 	/** Handle the automatic firing */
 	FTimerHandle TimerHandle_HandleFire;

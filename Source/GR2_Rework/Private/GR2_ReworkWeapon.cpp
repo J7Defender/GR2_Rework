@@ -2,8 +2,6 @@
 
 
 #include "GR2_ReworkWeapon.h"
-
-#include "GR2_Rework/GR2_Rework.h"
 #include "GR2_Rework/TP_WeaponComponent.h"
 
 // Sets default values

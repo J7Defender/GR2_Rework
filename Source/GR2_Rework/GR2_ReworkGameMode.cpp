@@ -31,16 +31,7 @@ void AGR2_ReworkGameMode::PostLogin(APlayerController* NewPlayer)
 }
 
 void AGR2_ReworkGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
-{
-	UWorld* World = GetWorld();
-	if (World && World->IsServer())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[Server] PostLogin"));		
-	} else if (World && World->IsClient())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[Client] PostLogin"));
-	}
-	
+{	
 	Super::InitGame(MapName, Options, ErrorMessage);
 }
 

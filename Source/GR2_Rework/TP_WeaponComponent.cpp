@@ -10,6 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Engine/DamageEvents.h"
 #include "Kismet/GameplayStatics.h"
+#include "Sound/SoundCue.h"
 
 // Sets default values for this component's properties
 UTP_WeaponComponent::UTP_WeaponComponent()
@@ -48,23 +49,22 @@ void UTP_WeaponComponent::Fire()
 
 	if (HitResult.GetActor() != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit something"));
-		
 		FPointDamageEvent PointDamageEvent;
 
 		Character->DealDamage(HitResult, WeaponBlueprint->Damage, RayStart, Character);
 
 		AGR2_ReworkBulletImpactEffects* ImpactFxInst = WeaponBlueprint->ImpactFX.GetDefaultObject();
 
-		WeaponFXHandler->SpawnFXWithLocation(this, ImpactFxInst->DefaultSound, HitResult.ImpactPoint);
+		WeaponFXHandler->SpawnSoundFXAt(this, ImpactFxInst->DefaultSound, HitResult.ImpactPoint);
 	}
-
-	// DrawDebugLine(GetWorld(), RayStart, RayEnd, FColor::Red, false, 2.f);
 	
 	// Try and play the sound if specified
 	if (FireSound != nullptr)
 	{
-		UGameplayStatics::PlaySoundAtLocation(this, FireSound, Character->GetActorLocation());
+		WeaponFXHandler->SpawnSoundFXAt(this, FireSound, Character->GetActorLocation());
+
+		// Replicate sound to all players
+		Character->Server_PlaySoundAt(this, FireSound, Character->GetActorLocation());
 	}
 	
 	// Try and play a firing animation if specified
@@ -80,9 +80,13 @@ void UTP_WeaponComponent::Fire()
 
 	// Try and display firing Fx if available
 	WeaponFXHandler->SpawnMuzzleFlashFX(this, WeaponBlueprint);
+	Character->Server_SpawnMuzzleFlashFX(this, WeaponBlueprint);
 
 	// Try and display trail Fx if available
 	WeaponFXHandler->SpawnTrailFX(this, WeaponBlueprint, HitResult, RayEnd, Rotation);
+
+	// Try and show impact Fx if available
+	WeaponFXHandler->SpawnImpactFX(this, WeaponBlueprint, HitResult);
 }
 
 void UTP_WeaponComponent::AttachWeaponToCharacter()

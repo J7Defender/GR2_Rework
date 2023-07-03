@@ -65,6 +65,10 @@ public:
 	/** impact effects */
 	UPROPERTY(EditDefaultsOnly, Category=Effects)
 	TSubclassOf<AGR2_ReworkBulletImpactEffects> ImpactFX;
+
+	/** spawned component for impact FX */
+	UPROPERTY(Transient)
+	UParticleSystemComponent* ImpactPSC;
 	
 protected:
 	// Called when the game starts or when spawned

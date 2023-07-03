@@ -24,5 +24,6 @@ public:
 	void SpawnTrailFX(UTP_WeaponComponent* WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint, const FHitResult& HitResult, const FVector& EndPoint, const FRotator& CharRotation);
 	void SpawnMuzzleFlashFX(UTP_WeaponComponent* WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint);
 	
-	void SpawnFXWithLocation(UTP_WeaponComponent* WeaponComponent, USoundCue* Sound, const FVector& Location);
+	void SpawnSoundFXAt(UTP_WeaponComponent* WeaponComponent, USoundBase* Sound, const FVector& Location);
+	void SpawnImpactFX(UTP_WeaponComponent* WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint, const FHitResult& HitResult);
 };
