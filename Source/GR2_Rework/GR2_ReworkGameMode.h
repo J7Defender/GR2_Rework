@@ -26,7 +26,7 @@ public:
 
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 
-	void RestartPlayerTimer(AController* CurrentController);
+	bool bIsPlayable;
 
 private:
 	int PlayerCount;

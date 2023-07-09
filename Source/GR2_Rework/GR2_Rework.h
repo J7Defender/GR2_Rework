@@ -14,3 +14,7 @@ DECLARE_LOG_CATEGORY_EXTERN(GR2, Log, All);
 
 #define MAX_FPS 75
 #define DEBUG 1
+
+#define LOOK_SENSITIVITY 0.5
+
+inline FString PlayableMaps[] = {"Map1"};

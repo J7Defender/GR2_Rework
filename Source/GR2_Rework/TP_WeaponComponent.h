@@ -21,9 +21,13 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category=Projectile)
 	TSubclassOf<class AGR2_ReworkProjectile> ProjectileClass;
 
-	/** Sound to play each time we fire */
+	/** Sound to play each time we fire (Hear by others) */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Gameplay)
 	USoundBase* FireSound;
+
+	/** Sound to play each time we fire (Hear by ourselves) */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Gameplay)
+	USoundBase* FireSoundPersonal;
 	
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Gameplay)
@@ -39,6 +43,17 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, Category="BluePrint")
 	AGR2_ReworkWeapon* WeaponBlueprint;
+	
+	/** The Character holding this weapon*/
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="BluePrint")
+	AGR2_ReworkCharacter* Character;
+
+	UPROPERTY(VisibleAnywhere, Category="HitEvent")
+	FHitResult HitResult;
+
+	/** End of the hitscan line */
+	UPROPERTY(VisibleAnywhere, Category="HitEvent")
+	FVector RayEnd;
 
 	/** Weapon FX Handler */
 	UTP_WeaponFXHandler* WeaponFXHandler;
@@ -71,9 +86,6 @@ protected:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
-	/** The Character holding this weapon*/
-	AGR2_ReworkCharacter* Character;
-
 	/** Handle the automatic firing */
 	FTimerHandle TimerHandle_HandleFire;
 

@@ -6,10 +6,8 @@
 #include "GR2_ReworkCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
-#include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/DamageEvents.h"
-#include "Kismet/GameplayStatics.h"
 #include "Sound/SoundCue.h"
 
 // Sets default values for this component's properties
@@ -27,6 +25,9 @@ UTP_WeaponComponent::UTP_WeaponComponent()
 
 void UTP_WeaponComponent::Fire()
 {
+	if (WeaponBlueprint->CurrentAmmo <= 0)
+		return;
+	
 	WeaponFXHandler->DespawnMuzzleFlashFX(WeaponBlueprint);
 
 	WeaponFXHandler->DespawnTrailFX(WeaponBlueprint);
@@ -35,12 +36,11 @@ void UTP_WeaponComponent::Fire()
 
 	FVector Location;
 	FRotator Rotation;
-	FHitResult HitResult;
 
 	Character->GetController()->GetPlayerViewPoint(Location, Rotation);
 
 	FVector RayStart = Location;
-	FVector RayEnd = RayStart + (Rotation.Vector() * WeaponBlueprint->Range);
+	RayEnd = RayStart + (Rotation.Vector() * WeaponBlueprint->Range);
 
 	FCollisionQueryParams CollisionQueryParams;
 	CollisionQueryParams.AddIgnoredActor(Character);
@@ -61,10 +61,10 @@ void UTP_WeaponComponent::Fire()
 	// Try and play the sound if specified
 	if (FireSound != nullptr)
 	{
-		WeaponFXHandler->SpawnSoundFXAt(this, FireSound, Character->GetActorLocation());
+		WeaponFXHandler->SpawnSoundFXAt(this, FireSoundPersonal, Character->GetActorLocation());
 
 		// Replicate sound to all players
-		Character->Server_PlaySoundAt(this, FireSound, Character->GetActorLocation());
+		Character->Server_PlayFireSound();
 	}
 	
 	// Try and play a firing animation if specified
@@ -80,13 +80,20 @@ void UTP_WeaponComponent::Fire()
 
 	// Try and display firing Fx if available
 	WeaponFXHandler->SpawnMuzzleFlashFX(this, WeaponBlueprint);
-	Character->Server_SpawnMuzzleFlashFX(this, WeaponBlueprint);
+	Character->Server_SpawnMuzzleFlashFX();
 
 	// Try and display trail Fx if available
 	WeaponFXHandler->SpawnTrailFX(this, WeaponBlueprint, HitResult, RayEnd, Rotation);
+	Character->Server_SpawnTrailFX();
 
 	// Try and show impact Fx if available
 	WeaponFXHandler->SpawnImpactFX(this, WeaponBlueprint, HitResult);
+	Character->Server_SpawnImpactFX();
+
+	// Reduce Current Ammo in clip
+	WeaponBlueprint->CurrentAmmo -= 1;
+
+	WeaponBlueprint->UpdateAmmoUI();
 }
 
 void UTP_WeaponComponent::AttachWeaponToCharacter()
@@ -105,7 +112,7 @@ void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)
 		return;
 	}
 	
-	switch (WeaponBlueprint->weaponType)
+	switch (WeaponBlueprint->WeaponType)
 	{
 	case Primary:
 		if (Character->GetWeapon1() != nullptr)
@@ -178,9 +185,12 @@ void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void UTP_WeaponComponent::AutomaticFiring()
 {
-	Fire();
-	if (WeaponBlueprint->IsAutomatic == true)
+	if (WeaponBlueprint->bIsReloading == false || WeaponBlueprint->CurrentAmmo > 0)
 	{
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle_HandleFire, this, &UTP_WeaponComponent::Fire, WeaponBlueprint->TimeBetweenShots, true);
+		Fire();
+		if (WeaponBlueprint->IsAutomatic == true)
+		{
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle_HandleFire, this, &UTP_WeaponComponent::Fire, WeaponBlueprint->TimeBetweenShots, true);
+		}
 	}
 }

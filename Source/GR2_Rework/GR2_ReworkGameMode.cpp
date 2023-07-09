@@ -7,10 +7,6 @@
 AGR2_ReworkGameMode::AGR2_ReworkGameMode()
 	: Super()
 {
-	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(TEXT("/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter"));
-	DefaultPawnClass = PlayerPawnClassFinder.Class;
-
 	PlayerCount = 0;
 }
 
@@ -31,22 +27,8 @@ void AGR2_ReworkGameMode::PostLogin(APlayerController* NewPlayer)
 }
 
 void AGR2_ReworkGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
-{	
-	Super::InitGame(MapName, Options, ErrorMessage);
-}
-
-void AGR2_ReworkGameMode::RestartPlayerTimer(AController* CurrentController)
 {
-	if (const UWorld* World = GetWorld())
-	{
-		if (AGR2_ReworkGameMode* GameMode = Cast<AGR2_ReworkGameMode>(World->GetAuthGameMode()))
-		{
-			FTimerHandle RespawnTimerHandler;
-			FTimerDelegate RespawnTimerDelegate;
+	Super::InitGame(MapName, Options, ErrorMessage);
 
-			RespawnTimerDelegate.BindUFunction(this, FName("RestartPlayer"), CurrentController);
-			
-			World->GetTimerManager().SetTimer(RespawnTimerHandler, RespawnTimerDelegate, RESPAWN_TIME, false);
-		}
-	}
+	UE_LOG(LogTemp, Warning, TEXT("Map Name: %s"), *MapName);
 }

@@ -9,7 +9,9 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "GR2_ReworkCharacterData.h"
 #include "GR2_ReworkGameMode.h"
+#include "GR2_ReworkGameMode_Map1.h"
 #include "TP_WeaponComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -20,7 +22,7 @@
 AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 {
 	// Character doesnt have a rifle at start
-	bHasRifle = false;
+	bHasRifle = true;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -51,10 +53,8 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 	MaxHealth = 100.f;
 	CurrentHealth = MaxHealth;
 
-	if (Weapon1 != nullptr)
-	{
-		SetCurrentWeapon(Weapon1);
-	}
+	if (GR2_ReworkCharacterData::GetInstance()->GetUserName() != "")
+		UserName = GR2_ReworkCharacterData::GetInstance()->GetUserName();
 }
 
 void AGR2_ReworkCharacter::BeginPlay()
@@ -69,6 +69,17 @@ void AGR2_ReworkCharacter::BeginPlay()
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Load Default Weapon"));
+
+	UE_LOG(LogTemp, Warning, TEXT("Playable Maps: %s"), *PlayableMaps[0]);
+	
+	UE_LOG(LogTemp, Warning, TEXT("GetWorld()->GetMapName(): %s"), *(GetWorld()->GetMapName()));
+	
+	if (GetWorld()->GetMapName() == PlayableMaps[0])
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Playable Map"));
+		SetWeaponOnSpawn();
 	}
 }
 
@@ -97,10 +108,22 @@ void AGR2_ReworkCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 		EnhancedInputComponent->BindAction(PrimaryWeaponChooseAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::OnPrimaryWeaponChoose);
 		EnhancedInputComponent->BindAction(SecondaryWeaponChooseAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::OnSecondaryWeaponChoose);
 
+		// Reload
+		EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Triggered, this, &AGR2_ReworkCharacter::OnReloadWeapon);
+
 		// Fire
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &AGR2_ReworkCharacter::StartBurst);
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &AGR2_ReworkCharacter::StopBurst);
 	}
+}
+
+void AGR2_ReworkCharacter::SetCurrentWeapon(AGR2_ReworkWeapon* Weapon)
+{
+	CurrentWeapon = Weapon;
+
+	// Update HUD on Equip to current weapon
+	CurrentWeapon->UpdateAmmoUI();
+	CurrentWeapon->UpdateReloadUI();
 }
 
 void AGR2_ReworkCharacter::OnHealthUpdateUI_Implementation()
@@ -149,13 +172,19 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 	UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
 	
 	AController* CurrentController = GetController();
+
+	// Destroy weapon actors
+	if (CurrentWeapon != nullptr) { CurrentWeapon->Destroy(); }
+	if (Weapon1 != nullptr) { Weapon1->Destroy(); }
+	if (Weapon2 != nullptr) { Weapon2->Destroy(); }
+	if (Weapon3 != nullptr) { Weapon3->Destroy(); }
 	
 	// Destroy current player
 	Destroy();
 
 	if (const UWorld* World = GetWorld())
 	{
-		if (AGR2_ReworkGameMode* GameMode = Cast<AGR2_ReworkGameMode>(World->GetAuthGameMode()))
+		if (AGR2_ReworkGameMode_Map1* GameMode = Cast<AGR2_ReworkGameMode_Map1>(World->GetAuthGameMode()))
 			{ GameMode->RestartPlayerTimer(CurrentController); }
 	}
 }
@@ -168,6 +197,16 @@ void AGR2_ReworkCharacter::OnDeathUpdateUI_Implementation()
 void AGR2_ReworkCharacter::OnRep_CurrentHealth()
 {
 	OnHealthUpdate();
+}
+
+void AGR2_ReworkCharacter::OnRep_CurrentWeapon()
+{
+	OnCurrentWeaponSet(CurrentWeapon);
+}
+
+void AGR2_ReworkCharacter::SetWeaponOnSpawn_Implementation()
+{
+	// Implemented in Blueprints
 }
 
 void AGR2_ReworkCharacter::SetCurrentHealth(float healthValue)
@@ -184,8 +223,25 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
 
 	SetCurrentHealth(GetCurrentHealth() - DamageAmount);
+
+	SlowDownOnHit();
 	
 	return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+}
+
+void AGR2_ReworkCharacter::SlowDownOnHit()
+{
+	MovementSpeedMultiplier = OnHitMovementSpeedMultiplier;
+
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_SlowEffectTimer);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle_SlowEffectTimer, this, &AGR2_ReworkCharacter::FinishSlowdown, OnHitEffectTime, true);
+}
+
+void AGR2_ReworkCharacter::FinishSlowdown()
+{
+	MovementSpeedMultiplier = 1;
+	
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_SlowEffectTimer);
 }
 
 void AGR2_ReworkCharacter::Multi_OnFireVFX_Implementation()
@@ -193,86 +249,86 @@ void AGR2_ReworkCharacter::Multi_OnFireVFX_Implementation()
 	
 }
 
-void AGR2_ReworkCharacter::Server_PlaySoundAt_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
-	USoundBase* SoundBase, const FVector& Vector)
+void AGR2_ReworkCharacter::Server_PlayFireSound_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
 	
-	Multi_PlaySoundAt(Utp_WeaponComponent, SoundBase, Vector);
+	Multi_PlayFireSound();
 }
 
-void AGR2_ReworkCharacter::Multi_PlaySoundAt_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
-	USoundBase* SoundBase, const FVector& Vector)
+void AGR2_ReworkCharacter::Multi_PlayFireSound_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"))
-
-	if (CurrentWeapon == nullptr)
+	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"));
+	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Location: %f, %f, %f"), CurrentWeapon->GetActorLocation().X, CurrentWeapon->GetActorLocation().Y, CurrentWeapon->GetActorLocation().Z);
+	if (GetLocalRole() == ROLE_SimulatedProxy)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] CurrentWeapon: NULL Pointer"))
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *GetName());
+		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(CurrentWeapon->WeaponComponent, CurrentWeapon->WeaponComponent->FireSound, CurrentWeapon->GetActorLocation());
 	}
-
-	if (CurrentWeapon->WeaponComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] WeaponComponent: NULL Pointer"))
-	}
-
-	if (CurrentWeapon->WeaponComponent->WeaponFXHandler == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] WeaponFXHandler: NULL Pointer"))
-	}
-
-	if (Utp_WeaponComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Utp_WeaponComponent: NULL Pointer"))
-	}
-
-	if (SoundBase == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] SoundBase: NULL Pointer"))
-	}
-	
-	CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(Utp_WeaponComponent, SoundBase, Vector);
 }
 
-void AGR2_ReworkCharacter::Server_SpawnMuzzleFlashFX_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
-	AGR2_ReworkWeapon* WeaponBlueprint)
+void AGR2_ReworkCharacter::Server_SpawnMuzzleFlashFX_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[SpawnMuzzleFlashFX] Call to Server"));
-	
-	Multi_SpawnMuzzleFlashFX(Utp_WeaponComponent, WeaponBlueprint);
+	Multi_SpawnMuzzleFlashFX();
 }
 
-void AGR2_ReworkCharacter::Multi_SpawnMuzzleFlashFX_Implementation(UTP_WeaponComponent* Utp_WeaponComponent,
-	AGR2_ReworkWeapon* WeaponBlueprint)
+void AGR2_ReworkCharacter::Multi_SpawnMuzzleFlashFX_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[SpawnMuzzleFlashFX] Multicast to Clients"))
-	
-	CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnMuzzleFlashFX(Utp_WeaponComponent, WeaponBlueprint);
+	if (GetLocalRole() == ROLE_SimulatedProxy)
+	{
+		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnMuzzleFlashFX(CurrentWeapon->WeaponComponent, CurrentWeapon);
+	}
+}
+
+void AGR2_ReworkCharacter::Server_SpawnTrailFX_Implementation()
+{
+	Multi_SpawnTrailFX();
+}
+
+void AGR2_ReworkCharacter::Multi_SpawnTrailFX_Implementation()
+{
+	if (GetLocalRole() == ROLE_SimulatedProxy)
+	{
+		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnTrailFX(CurrentWeapon->WeaponComponent, CurrentWeapon, CurrentWeapon->WeaponComponent->HitResult, CurrentWeapon->WeaponComponent->RayEnd, CurrentWeapon->GetActorRotation());
+	}
+}
+
+void AGR2_ReworkCharacter::Server_SpawnImpactFX_Implementation()
+{
+	Multi_SpawnImpactFX();
+}
+
+void AGR2_ReworkCharacter::Multi_SpawnImpactFX_Implementation()
+{
+	if (GetLocalRole() == ROLE_SimulatedProxy)
+	{
+		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnImpactFX(CurrentWeapon->WeaponComponent, CurrentWeapon, CurrentWeapon->WeaponComponent->HitResult);
+	}
 }
 
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
+	const FVector2D MovementVector = Value.Get<FVector2D>();
 
 	if (Controller != nullptr)
 	{
 		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		AddMovementInput(GetActorForwardVector(), MovementVector.Y * MovementSpeedMultiplier);
+		AddMovementInput(GetActorRightVector(), MovementVector.X * MovementSpeedMultiplier);
 	}
 }
 
 void AGR2_ReworkCharacter::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	FVector2D LookAxisVector = Value.Get<FVector2D>();
+	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 
 	if (Controller != nullptr)
 	{
 		// add yaw and pitch input to controller
-		AddControllerYawInput(LookAxisVector.X);
-		AddControllerPitchInput(LookAxisVector.Y);
+		AddControllerYawInput(LookAxisVector.X * LOOK_SENSITIVITY);
+		AddControllerPitchInput(LookAxisVector.Y * LOOK_SENSITIVITY);
 	}
 }
 
@@ -291,7 +347,7 @@ void AGR2_ReworkCharacter::StopCrouch()
 void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
 {
 	if (Weapon1 == nullptr) { return; }
-	if (CurrentWeapon->weaponType != Primary)
+	if (CurrentWeapon->WeaponType != Primary)
 	{
 		OnCurrentWeaponSet(Weapon1);
 	}
@@ -300,7 +356,7 @@ void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
 void AGR2_ReworkCharacter::OnSecondaryWeaponChoose()
 {
 	if (Weapon2 == nullptr) { return; }
-	if (CurrentWeapon->weaponType != Secondary)
+	if (CurrentWeapon->WeaponType != Secondary)
 	{
 		OnCurrentWeaponSet(Weapon2);
 	}
@@ -322,6 +378,14 @@ void AGR2_ReworkCharacter::StopBurst()
 	}
 }
 
+void AGR2_ReworkCharacter::OnReloadWeapon()
+{
+	if (CurrentWeapon != nullptr)
+	{
+		CurrentWeapon->ReloadWeapon();
+	}
+}
+
 void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -329,6 +393,10 @@ void AGR2_ReworkCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	// Replicate these things
 	DOREPLIFETIME(AGR2_ReworkCharacter, Mesh3P);
 	DOREPLIFETIME(AGR2_ReworkCharacter, CurrentHealth);
+	DOREPLIFETIME(AGR2_ReworkCharacter, CurrentWeapon);
+	DOREPLIFETIME(AGR2_ReworkCharacter, Weapon1);
+	DOREPLIFETIME(AGR2_ReworkCharacter, Weapon2);
+	DOREPLIFETIME(AGR2_ReworkCharacter, Weapon3);
 }
 
 void AGR2_ReworkCharacter::SetHasRifle(bool bNewHasRifle)
@@ -365,6 +433,7 @@ void AGR2_ReworkCharacter::OnCurrentWeaponSet_Implementation(AGR2_ReworkWeapon* 
 		StopBurst();
 		SetCurrentWeapon(WeaponToSet);
 		CurrentWeapon->SetVisibility(true);
+		CurrentWeapon->UpdateAmmoUI();
 	} else
 	{
 #if PLATFORM_WINDOWS

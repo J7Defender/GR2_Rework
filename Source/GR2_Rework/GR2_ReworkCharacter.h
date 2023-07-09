@@ -77,9 +77,29 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* SecondaryWeaponChooseAction;
 
+	/** Action reload weapon */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* ReloadAction;
+
 	/** Bool for AnimBP to switch to another animation set */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
 	bool bHasRifle;
+
+private:
+	float MovementSpeedMultiplier = 1.0f;
+	
+	FTimerHandle TimerHandle_SlowEffectTimer;
+
+	UPROPERTY(EditDefaultsOnly, Category = Weapon)
+	float OnHitMovementSpeedMultiplier;
+
+	UPROPERTY(EditDefaultsOnly, Category = Weapon)
+	float OnHitEffectTime;
+
+	void FinishSlowdown();
+	void SlowDownOnHit();
+
+public:
 
 	/** Setter to set the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
@@ -100,17 +120,29 @@ public:
 	void Multi_OnFireVFX();
 	void Multi_OnFireVFX_Implementation();
 
-	UFUNCTION(Server, Reliable)
-	void Server_PlaySoundAt(UTP_WeaponComponent* Utp_WeaponComponent, USoundBase* SoundBase, const FVector& Vector);
+	UFUNCTION(Server, Unreliable)
+	void Server_PlayFireSound();
 
-	UFUNCTION(NetMulticast, Reliable)
-	void Multi_PlaySoundAt(UTP_WeaponComponent* Utp_WeaponComponent, USoundBase* SoundBase, const FVector& Vector);
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multi_PlayFireSound();
 
-	UFUNCTION(Server, Reliable)
-	void Server_SpawnMuzzleFlashFX(UTP_WeaponComponent* Utp_WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint);
+	UFUNCTION(Server, Unreliable)
+	void Server_SpawnMuzzleFlashFX();
 
-	UFUNCTION(NetMulticast, Reliable)
-	void Multi_SpawnMuzzleFlashFX(UTP_WeaponComponent* Utp_WeaponComponent, AGR2_ReworkWeapon* WeaponBlueprint);
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multi_SpawnMuzzleFlashFX();
+
+	UFUNCTION(Server, Unreliable)
+	void Server_SpawnTrailFX();
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multi_SpawnTrailFX();
+
+	UFUNCTION(Server, Unreliable)
+	void Server_SpawnImpactFX();
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void Multi_SpawnImpactFX();
 
 protected:
 	/** Called for movement input */
@@ -127,11 +159,13 @@ protected:
 
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
 
-protected:
 	void OnPrimaryWeaponChoose();
 	void OnSecondaryWeaponChoose();
 	void StartBurst();
 	void StopBurst();
+
+	void OnReloadWeapon();
+	
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
 	// End of APawn interface
@@ -147,7 +181,7 @@ public:
 	AGR2_ReworkWeapon* GetCurrentWeapon() const { return CurrentWeapon; }
 
 	/** Set Current Weapon */
-	void SetCurrentWeapon(AGR2_ReworkWeapon* Weapon) { CurrentWeapon = Weapon; }
+	void SetCurrentWeapon(AGR2_ReworkWeapon* Weapon);
 
 	/** Get Primary Weapon*/
 	AGR2_ReworkWeapon* GetWeapon1() const { return Weapon1; }
@@ -171,6 +205,8 @@ protected:
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentHealth)
 	float CurrentHealth;
 
+public:
+
 	/** Character Blueprint */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Blueprint")
 	AGR2_ReworkCharacter* CharacterBlueprint;
@@ -179,21 +215,24 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "HUD")
 	UUserWidget* CharacterHUD;
 
-	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", ReplicatedUsing = OnRep_CurrentWeapon)
 	AGR2_ReworkWeapon* CurrentWeapon;
 
 	/** Current weapons of player */
-	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon1;
 	
-	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon2;
 	
-	UPROPERTY(Instanced, EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon3;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Team")
 	TEnumAsByte<ETeam> PlayerTeam;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="UserName")
+	FString UserName;
 	
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnHealthUpdateUI();
@@ -216,10 +255,17 @@ protected:
 	UFUNCTION()
 	void OnRep_CurrentHealth();
 
+	UFUNCTION()
+	void OnRep_CurrentWeapon();
+
 	UFUNCTION(BlueprintNativeEvent, Category="Weapon")
 	void OnCurrentWeaponSet(AGR2_ReworkWeapon* WeaponToSet);
 
-public:
+	UFUNCTION(BlueprintNativeEvent, Category="Weapon")
+	void SetWeaponOnSpawn();
+
+	// Setter & Getter
+	
 	/** Getter for Max Health.*/
 	UFUNCTION(BlueprintPure, Category="Health")
 	FORCEINLINE float GetMaxHealth() const { return MaxHealth; } 
@@ -231,9 +277,8 @@ public:
 	/** Setter for Current Health. Clamps the value between 0 and MaxHealth and calls OnHealthUpdate. Should only be called on the server.*/
 	UFUNCTION(BlueprintCallable, Category="Health")
 	void SetCurrentHealth(float healthValue);
-
+	
 	/** Event for taking damage. Overridden from APawn.*/
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 };
-
