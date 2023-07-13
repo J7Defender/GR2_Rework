@@ -15,5 +15,4 @@ class GR2_REWORK_API AGR2_ReworkGameSession : public AGameSession
 	GENERATED_BODY()
 
 	virtual void BeginPlay() override;
-	
 };

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GR2_ReworkPlayerState.h"
 #include "GameFramework/GameState.h"
 #include "GR2_ReworkGameState_Map1.generated.h"
 
@@ -23,4 +24,17 @@ public:
 
 	UPROPERTY(Transient, Replicated)
 	int RemainingTime;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
+	TArray<AGR2_ReworkPlayerState*> BluePlayers;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
+	TArray<AGR2_ReworkPlayerState*> RedPlayers;
+
+	/** FUNCTIONS */
+	virtual void HandleMatchIsWaitingToStart() override;
+
+	virtual void HandleMatchHasStarted() override;
+
+	virtual void HandleMatchHasEnded() override;
 };

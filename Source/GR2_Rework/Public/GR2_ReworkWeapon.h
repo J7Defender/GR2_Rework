@@ -115,6 +115,12 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, Category = "Reload")
 	void ReloadWeapon();
+
+	UFUNCTION(Category = "Destroy")
+	void DestroyWeaponOnKilled();
+
+	UFUNCTION(NetMulticast, Reliable, Category = "Destroy")
+	void Multi_DestroyWeapon();
 	
 	void FinishReloading();
 

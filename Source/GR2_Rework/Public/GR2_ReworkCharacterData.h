@@ -19,6 +19,6 @@ public:
 
 	// Variables
 	inline static GR2_ReworkCharacterData* CharacterData = nullptr;
-
+	
 	FString Name = "";
 };

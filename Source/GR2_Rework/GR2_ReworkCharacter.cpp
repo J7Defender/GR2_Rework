@@ -13,6 +13,7 @@
 #include "GR2_ReworkGameMode.h"
 #include "GR2_ReworkGameMode_Map1.h"
 #include "TP_WeaponComponent.h"
+#include "GameFramework/PlayerState.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -52,9 +53,6 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 
 	MaxHealth = 100.f;
 	CurrentHealth = MaxHealth;
-
-	if (GR2_ReworkCharacterData::GetInstance()->GetUserName() != "")
-		UserName = GR2_ReworkCharacterData::GetInstance()->GetUserName();
 }
 
 void AGR2_ReworkCharacter::BeginPlay()
@@ -162,10 +160,10 @@ bool AGR2_ReworkCharacter::OnDeathServer_Validate()
 	return true;
 }
 
-void AGR2_ReworkCharacter::ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController)
-{
-	GameMode->RestartPlayer(CurrentController);
-}
+// void AGR2_ReworkCharacter::ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController)
+// {
+// 	GameMode->RestartPlayer(CurrentController);
+// }
 
 void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 {
@@ -174,10 +172,10 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 	AController* CurrentController = GetController();
 
 	// Destroy weapon actors
-	if (CurrentWeapon != nullptr) { CurrentWeapon->Destroy(); }
-	if (Weapon1 != nullptr) { Weapon1->Destroy(); }
-	if (Weapon2 != nullptr) { Weapon2->Destroy(); }
-	if (Weapon3 != nullptr) { Weapon3->Destroy(); }
+	if (CurrentWeapon != nullptr) { CurrentWeapon->DestroyWeaponOnKilled(); }
+	if (Weapon1 != nullptr) { Weapon1->DestroyWeaponOnKilled(); }
+	if (Weapon2 != nullptr) { Weapon2->DestroyWeaponOnKilled(); }
+	if (Weapon3 != nullptr) { Weapon3->DestroyWeaponOnKilled(); }
 	
 	// Destroy current player
 	Destroy();
@@ -190,6 +188,18 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 }
 
 void AGR2_ReworkCharacter::OnDeathUpdateUI_Implementation()
+{
+	// Implemented in Blueprints
+}
+
+void AGR2_ReworkCharacter::Client_DisplayChooseTeamWidget_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("[Client] Client_DisplayChooseTeamWidget"))
+	
+	DisplayChooseTeamWidget();
+}
+
+void AGR2_ReworkCharacter::DisplayChooseTeamWidget_Implementation()
 {
 	// Implemented in Blueprints
 }

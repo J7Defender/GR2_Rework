@@ -16,10 +16,6 @@ class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
 
-/** Player's Team */
-UENUM(BlueprintType)
-enum ETeam { Red, Blue };
-
 UCLASS(config=Game)
 class AGR2_ReworkCharacter : public ACharacter
 {
@@ -199,7 +195,7 @@ protected:
 
 	/** The player's maximum health. This is the highest value of their health can be. This value is a value of the player's health, which starts at when spawned.*/
 	UPROPERTY(EditDefaultsOnly, Category = "Health")
-	float MaxHealth;
+	float MaxHealth = 100;
 
 	/** The player's current health. When reduced to 0, they are considered dead.*/
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentHealth)
@@ -228,12 +224,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapons", Replicated)
 	AGR2_ReworkWeapon* Weapon3;
 	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Team")
-	TEnumAsByte<ETeam> PlayerTeam;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="UserName")
-	FString UserName;
-	
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnHealthUpdateUI();
 	
@@ -245,11 +235,17 @@ public:
 	bool OnDeathServer_Validate();
 	void OnDeathServer_Implementation();
 
-	UFUNCTION()
-	static void ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController);
+	// UFUNCTION()
+	// static void ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController);
 
 	UFUNCTION(BlueprintNativeEvent, Category="Health")
 	void OnDeathUpdateUI();
+
+	UFUNCTION(Client, Reliable, Category="Team")
+	void Client_DisplayChooseTeamWidget();
+
+	UFUNCTION(BlueprintNativeEvent, Category="Team")
+	void DisplayChooseTeamWidget();
 	
 	/** RepNotify for changes made to current health.*/
 	UFUNCTION()

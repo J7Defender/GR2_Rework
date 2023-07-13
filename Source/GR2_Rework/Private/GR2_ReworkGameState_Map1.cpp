@@ -12,4 +12,21 @@ void AGR2_ReworkGameState_Map1::GetLifetimeReplicatedProps(TArray<FLifetimePrope
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, RedTeamScore);
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, BlueTeamScore);
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, RemainingTime);
+	DOREPLIFETIME(AGR2_ReworkGameState_Map1, BluePlayers);
+	DOREPLIFETIME(AGR2_ReworkGameState_Map1, RedPlayers);
+}
+
+void AGR2_ReworkGameState_Map1::HandleMatchIsWaitingToStart()
+{
+	Super::HandleMatchIsWaitingToStart();
+}
+
+void AGR2_ReworkGameState_Map1::HandleMatchHasStarted()
+{
+	Super::HandleMatchHasStarted();
+}
+
+void AGR2_ReworkGameState_Map1::HandleMatchHasEnded()
+{
+	Super::HandleMatchHasEnded();
 }

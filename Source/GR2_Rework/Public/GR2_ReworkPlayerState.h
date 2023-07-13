@@ -9,9 +9,28 @@
 /**
  * 
  */
+
+UENUM()
+enum ETeam { Blue, Red };
+
 UCLASS()
 class GR2_REWORK_API AGR2_ReworkPlayerState : public APlayerState
 {
 	GENERATED_BODY()
+
+public:
+	AGR2_ReworkPlayerState();
 	
+	/** Player Team */
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Team", Replicated)
+	TEnumAsByte<ETeam> Team;
+
+	UFUNCTION(Server, Reliable, Category="Name")
+	void Server_SetCustomPlayerName(const FString& Name);
+	
+	UFUNCTION(BlueprintCallable, Category="Name")
+	void SetCustomPlayerName(const FString& Name);
+	
+	/** Override */
+	virtual void BeginPlay() override;
 };

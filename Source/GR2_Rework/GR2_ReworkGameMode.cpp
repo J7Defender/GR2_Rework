@@ -7,7 +7,6 @@
 AGR2_ReworkGameMode::AGR2_ReworkGameMode()
 	: Super()
 {
-	PlayerCount = 0;
 }
 
 FString AGR2_ReworkGameMode::InitNewPlayer(APlayerController* NewPlayerController, const FUniqueNetIdRepl& UniqueId,
@@ -26,9 +25,12 @@ void AGR2_ReworkGameMode::PostLogin(APlayerController* NewPlayer)
 	Super::PostLogin(NewPlayer);
 }
 
+void AGR2_ReworkGameMode::Logout(AController* Exiting)
+{	
+	Super::Logout(Exiting);
+}
+
 void AGR2_ReworkGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
-
-	UE_LOG(LogTemp, Warning, TEXT("Map Name: %s"), *MapName);
 }

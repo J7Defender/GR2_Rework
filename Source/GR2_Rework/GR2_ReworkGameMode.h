@@ -5,13 +5,13 @@
 #define RESPAWN_TIME 3
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameModeBase.h"
+#include "GameFramework/GameMode.h"
 #include "GR2_ReworkGameMode.generated.h"
 
 class AGR2_ReworkCharacter;
 
 UCLASS(minimalapi)
-class AGR2_ReworkGameMode : public AGameModeBase
+class AGR2_ReworkGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
@@ -24,13 +24,13 @@ public:
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 
+	virtual void Logout(AController* Exiting) override;
+
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 
 	bool bIsPlayable;
 
 private:
-	int PlayerCount;
-
 	TSubclassOf<AGR2_ReworkCharacter> CharacterClass;
 };
 

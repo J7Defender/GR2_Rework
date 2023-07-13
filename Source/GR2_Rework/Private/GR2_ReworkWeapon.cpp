@@ -37,6 +37,17 @@ void AGR2_ReworkWeapon::Tick(float DeltaTime)
 	
 }
 
+void AGR2_ReworkWeapon::Multi_DestroyWeapon_Implementation()
+{
+	Destroy();
+}
+
+void AGR2_ReworkWeapon::DestroyWeaponOnKilled()
+{
+	Destroy();
+	Multi_DestroyWeapon();
+}
+
 void AGR2_ReworkWeapon::FinishReloading()
 {
 	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkWeapon::FinishReloading"));

@@ -7,5 +7,5 @@
 
 void UGR2_ReworkSetNameWidget::SetName(const FString& Name)
 {
-	GR2_ReworkCharacterData::SetUserName(Name);
+	GR2_ReworkCharacterData::GetInstance()->SetUserName(Name);
 }
