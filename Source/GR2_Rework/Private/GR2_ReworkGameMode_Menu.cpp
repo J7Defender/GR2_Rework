@@ -3,4 +3,3 @@
 
 #include "GR2_ReworkGameMode_Menu.h"
 
-#include "GR2_ReworkCharacterData.h"

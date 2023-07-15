@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GR2_Rework/GR2_ReworkGameMode.h"
-#include "GR2_Rework/HUD/PopUp/GR2_Rework_Choose_Team_Widget.h"
 #include "GR2_ReworkGameMode_Map1.generated.h"
 
 /**
@@ -41,6 +40,8 @@ public:
 	void RestartPlayerTimer(AController* CurrentController);
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+	virtual void RestartPlayer(AController* NewPlayer) override;
+	virtual void RestartPlayerAtPlayerStart(AController* NewPlayer, AActor* StartSpot) override;
 
 	virtual void Logout(AController* Exiting) override;
 

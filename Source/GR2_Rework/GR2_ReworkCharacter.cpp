@@ -9,11 +9,8 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "GR2_ReworkCharacterData.h"
-#include "GR2_ReworkGameMode.h"
 #include "GR2_ReworkGameMode_Map1.h"
 #include "TP_WeaponComponent.h"
-#include "GameFramework/PlayerState.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -68,15 +65,11 @@ void AGR2_ReworkCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-	UE_LOG(LogTemp, Warning, TEXT("Load Default Weapon"));
 
-	UE_LOG(LogTemp, Warning, TEXT("Playable Maps: %s"), *PlayableMaps[0]);
-	
-	UE_LOG(LogTemp, Warning, TEXT("GetWorld()->GetMapName(): %s"), *(GetWorld()->GetMapName()));
+	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::BeginPlay"))
 	
 	if (GetWorld()->GetMapName() == PlayableMaps[0])
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Playable Map"));
 		SetWeaponOnSpawn();
 	}
 }
@@ -171,6 +164,11 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 	
 	AController* CurrentController = GetController();
 
+	if (CurrentController == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
+	}
+
 	// Destroy weapon actors
 	if (CurrentWeapon != nullptr) { CurrentWeapon->DestroyWeaponOnKilled(); }
 	if (Weapon1 != nullptr) { Weapon1->DestroyWeaponOnKilled(); }
@@ -254,11 +252,6 @@ void AGR2_ReworkCharacter::FinishSlowdown()
 	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_SlowEffectTimer);
 }
 
-void AGR2_ReworkCharacter::Multi_OnFireVFX_Implementation()
-{
-	
-}
-
 void AGR2_ReworkCharacter::Server_PlayFireSound_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
@@ -316,12 +309,32 @@ void AGR2_ReworkCharacter::Multi_SpawnImpactFX_Implementation()
 	}
 }
 
+void AGR2_ReworkCharacter::RestartPlayer()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::RestartPlayer"));
+	OnDeathServer();
+}
+
+void AGR2_ReworkCharacter::SetPlayerColor(const FString& Color)
+{
+	// TODO: Change player color based on their team
+
+	UE_LOG(LogTemp, Warning, TEXT("[Character] Change player color based on team"));
+	return;
+}
+
+void AGR2_ReworkCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	bIsMoveAble = static_cast<AGR2_ReworkPlayerState*>(GetPlayerState())->Team != None;
+}
+
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	const FVector2D MovementVector = Value.Get<FVector2D>();
 
-	if (Controller != nullptr)
+	if (Controller != nullptr && bIsMoveAble)
 	{
 		// add movement 
 		AddMovementInput(GetActorForwardVector(), MovementVector.Y * MovementSpeedMultiplier);
@@ -334,7 +347,7 @@ void AGR2_ReworkCharacter::Look(const FInputActionValue& Value)
 	// input is a Vector2D
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-	if (Controller != nullptr)
+	if (Controller != nullptr && bIsMoveAble)
 	{
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X * LOOK_SENSITIVITY);
@@ -357,7 +370,7 @@ void AGR2_ReworkCharacter::StopCrouch()
 void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
 {
 	if (Weapon1 == nullptr) { return; }
-	if (CurrentWeapon->WeaponType != Primary)
+	if (CurrentWeapon->WeaponType != Primary && bIsMoveAble)
 	{
 		OnCurrentWeaponSet(Weapon1);
 	}
@@ -366,7 +379,7 @@ void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
 void AGR2_ReworkCharacter::OnSecondaryWeaponChoose()
 {
 	if (Weapon2 == nullptr) { return; }
-	if (CurrentWeapon->WeaponType != Secondary)
+	if (CurrentWeapon->WeaponType != Secondary && bIsMoveAble)
 	{
 		OnCurrentWeaponSet(Weapon2);
 	}
@@ -374,7 +387,7 @@ void AGR2_ReworkCharacter::OnSecondaryWeaponChoose()
 
 void AGR2_ReworkCharacter::StartBurst()
 {
-	if (CurrentWeapon != nullptr)
+	if (CurrentWeapon != nullptr && bIsMoveAble)
 	{
 		CurrentWeapon->StartBurst();
 	}
@@ -390,7 +403,7 @@ void AGR2_ReworkCharacter::StopBurst()
 
 void AGR2_ReworkCharacter::OnReloadWeapon()
 {
-	if (CurrentWeapon != nullptr)
+	if (CurrentWeapon != nullptr && bIsMoveAble)
 	{
 		CurrentWeapon->ReloadWeapon();
 	}

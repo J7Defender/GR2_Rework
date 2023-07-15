@@ -2,26 +2,21 @@
 
 #include "GR2_ReworkGameMode_Map1.h"
 
-#include "GR2_ReworkCharacterData.h"
 #include "GR2_ReworkGameState_Map1.h"
-#include "Blueprint/UserWidget.h"
 #include "GR2_Rework/GR2_ReworkCharacter.h"
 
 void AGR2_ReworkGameMode_Map1::RestartPlayerTimer(AController* CurrentController)
 {
 	if (const UWorld* World = GetWorld())
 	{
-		if (AGR2_ReworkGameMode* GameMode = Cast<AGR2_ReworkGameMode>(World->GetAuthGameMode()))
-		{
-			FTimerHandle RespawnTimerHandler;
-			FTimerDelegate RespawnTimerDelegate;
-			
-			UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] NumPlayers: %d"), GetNumPlayers());
+		FTimerHandle RespawnTimerHandler;
+		FTimerDelegate RespawnTimerDelegate;
+		
+		UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] AGR2_ReworkGameMode_Map1::RestartPlayerTimer"));
 
-			RespawnTimerDelegate.BindUFunction(this, FName("RestartPlayer"), CurrentController);
-			
-			World->GetTimerManager().SetTimer(RespawnTimerHandler, RespawnTimerDelegate, RESPAWN_TIME, false);
-		}
+		RespawnTimerDelegate.BindUFunction(this, FName("RestartPlayer"), CurrentController);
+		
+		World->GetTimerManager().SetTimer(RespawnTimerHandler, RespawnTimerDelegate, RESPAWN_TIME, false);
 	}
 }
 
@@ -32,6 +27,34 @@ void AGR2_ReworkGameMode_Map1::PostLogin(APlayerController* NewPlayer)
 	static_cast<AGR2_ReworkCharacter*>(NewPlayer->GetCharacter())->Client_DisplayChooseTeamWidget();
 	
 	UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] Player Logged in. NumPlayers: %d"), GetNumPlayers());
+}
+
+void AGR2_ReworkGameMode_Map1::RestartPlayer(AController* NewPlayer)
+{
+	FString TeamStr = "";
+	AActor* TeamPlayerStart;
+
+	if (NewPlayer == nullptr || NewPlayer->GetPlayerState<AGR2_ReworkPlayerState>() == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[AGR2_ReworkGameMode_Map1::RestartPlayer] NULL or Player Disconnected"))
+		return;
+	}
+	
+	if (NewPlayer->GetPlayerState<AGR2_ReworkPlayerState>()->Team == ETeam::None)
+	{
+		TeamStr = TEXT("None");
+		TeamPlayerStart = FindPlayerStart(NewPlayer, TeamStr);
+	} else {
+		TeamStr = NewPlayer->GetPlayerState<AGR2_ReworkPlayerState>()->Team == ETeam::Red ? TEXT("Red") : TEXT("Blue");
+		TeamPlayerStart = FindPlayerStart(NewPlayer, TeamStr);
+	}
+
+	RestartPlayerAtPlayerStart(NewPlayer, TeamPlayerStart);
+}
+
+void AGR2_ReworkGameMode_Map1::RestartPlayerAtPlayerStart(AController* NewPlayer, AActor* StartSpot)
+{
+	Super::RestartPlayerAtPlayerStart(NewPlayer, StartSpot);
 }
 
 void AGR2_ReworkGameMode_Map1::Logout(AController* Exiting)
@@ -45,8 +68,6 @@ void AGR2_ReworkGameMode_Map1::Logout(AController* Exiting)
 	}
 	
 	Super::Logout(Exiting);
-	
-	UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] Player Logged out. PlayerName: %s"), *(Exiting->GetPlayerState<AGR2_ReworkPlayerState>()->GetPlayerName()));
 	
 	UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] Player Logged out. Remaining NumPlayers: %d"), GetNumPlayers());
 }

@@ -15,11 +15,6 @@ FString AGR2_ReworkGameMode::InitNewPlayer(APlayerController* NewPlayerControlle
 	return Super::InitNewPlayer(NewPlayerController, UniqueId, Options, Portal);
 }
 
-void AGR2_ReworkGameMode::RestartPlayer(AController* NewPlayer)
-{
-	Super::RestartPlayer(NewPlayer);
-}
-
 void AGR2_ReworkGameMode::PostLogin(APlayerController* NewPlayer)
 {	
 	Super::PostLogin(NewPlayer);

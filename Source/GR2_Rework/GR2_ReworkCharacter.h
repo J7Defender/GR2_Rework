@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_ReworkGameMode.h"
+#include "GR2_ReworkPlayerState.h"
 #include "GR2_ReworkWeapon.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
@@ -56,6 +56,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
+	bool bIsMoveAble = false;
+	// TODO: Change bIsMoveAble to false to prevent players from moving while choosing team
 		
 	/** Look Input Action */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
@@ -112,10 +116,6 @@ public:
 	bool Server_OnDealDamage_Validate(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 	void Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 
-	UFUNCTION(NetMulticast, Unreliable)
-	void Multi_OnFireVFX();
-	void Multi_OnFireVFX_Implementation();
-
 	UFUNCTION(Server, Unreliable)
 	void Server_PlayFireSound();
 
@@ -139,6 +139,14 @@ public:
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void Multi_SpawnImpactFX();
+
+	UFUNCTION(BlueprintCallable, Category="Restart")
+	void RestartPlayer();
+
+	UFUNCTION()
+	void SetPlayerColor(const FString& Color);
+
+	virtual void OnRep_PlayerState() override;
 
 protected:
 	/** Called for movement input */

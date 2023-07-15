@@ -20,8 +20,6 @@ public:
 
 	virtual FString InitNewPlayer(APlayerController* NewPlayerController, const FUniqueNetIdRepl& UniqueId, const FString& Options, const FString& Portal) override;
 
-	virtual void RestartPlayer(AController* NewPlayer) override;
-
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 
 	virtual void Logout(AController* Exiting) override;

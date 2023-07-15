@@ -16,6 +16,7 @@ class GR2_REWORK_API AGR2_ReworkGameState_Map1 : public AGameState
 	GENERATED_BODY()
 
 public:
+	
 	UPROPERTY(Transient, Replicated)
 	int RedTeamScore;
 
@@ -33,8 +34,6 @@ public:
 
 	/** FUNCTIONS */
 	virtual void HandleMatchIsWaitingToStart() override;
-
 	virtual void HandleMatchHasStarted() override;
-
 	virtual void HandleMatchHasEnded() override;
 };

@@ -5,17 +5,6 @@
 
 GR2_ReworkHUDManager::GR2_ReworkHUDManager()
 {
+	
 }
 
-GR2_ReworkHUDManager::~GR2_ReworkHUDManager()
-{
-}
-
-GR2_ReworkHUDManager* GR2_ReworkHUDManager::GetInstance()
-{
-	if (HUDManager == nullptr)
-	{
-		HUDManager = new GR2_ReworkHUDManager();
-	}
-	return HUDManager;
-}
