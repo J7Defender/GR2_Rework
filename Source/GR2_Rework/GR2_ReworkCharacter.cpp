@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "GR2_ReworkGameMode_Map1.h"
 #include "TP_WeaponComponent.h"
+#include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -54,7 +55,7 @@ AGR2_ReworkCharacter::AGR2_ReworkCharacter()
 
 void AGR2_ReworkCharacter::BeginPlay()
 {
-	// Call the base class  
+	// Call the base class
 	Super::BeginPlay();
 
 	//Add Input Mapping Context
@@ -158,6 +159,62 @@ bool AGR2_ReworkCharacter::OnDeathServer_Validate()
 // 	GameMode->RestartPlayer(CurrentController);
 // }
 
+void AGR2_ReworkCharacter::Server_DestroyWeapons()
+{
+	if (CurrentWeapon != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] CurrentWeapon"));
+		CurrentWeapon->Destroy();
+		CurrentWeapon = nullptr;
+	}
+	if (Weapon1 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon1"));
+		Weapon1->Destroy();
+		Weapon1 = nullptr;
+	}
+	if (Weapon2 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon2"));
+		Weapon2->Destroy();
+		Weapon2 = nullptr;
+	}
+	if (Weapon3 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon3"));
+		Weapon3->Destroy();
+		Weapon3 = nullptr;
+	}
+}
+
+void AGR2_ReworkCharacter::Multi_DestroyWeapons_Implementation()
+{
+	if (CurrentWeapon != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] CurrentWeapon"));
+		CurrentWeapon->Destroy();
+		CurrentWeapon = nullptr;
+	}
+	if (Weapon1 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon1"));
+		Weapon1->Destroy();
+		Weapon1 = nullptr;
+	}
+	if (Weapon2 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon2"));
+		Weapon2->Destroy();
+		Weapon2 = nullptr;
+	}
+	if (Weapon3 != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon3"));
+		Weapon3->Destroy();
+		Weapon3 = nullptr;
+	}
+}
+
 void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
@@ -166,14 +223,13 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 
 	if (CurrentController == nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
+		UE_LOG(LogTemp, Warning, TEXT("[Server] Cannot get killed player controller"));
+		return;
 	}
 
 	// Destroy weapon actors
-	if (CurrentWeapon != nullptr) { CurrentWeapon->DestroyWeaponOnKilled(); }
-	if (Weapon1 != nullptr) { Weapon1->DestroyWeaponOnKilled(); }
-	if (Weapon2 != nullptr) { Weapon2->DestroyWeaponOnKilled(); }
-	if (Weapon3 != nullptr) { Weapon3->DestroyWeaponOnKilled(); }
+	Server_DestroyWeapons();
+	Multi_DestroyWeapons();
 	
 	// Destroy current player
 	Destroy();
@@ -309,9 +365,10 @@ void AGR2_ReworkCharacter::Multi_SpawnImpactFX_Implementation()
 	}
 }
 
-void AGR2_ReworkCharacter::RestartPlayer()
+void AGR2_ReworkCharacter::RestartPlayerOnBeginMatch()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::RestartPlayer"));
+	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::RestartPlayerOnBeginMatch"));
+	CharacterHUD->RemoveFromParent();
 	OnDeathServer();
 }
 

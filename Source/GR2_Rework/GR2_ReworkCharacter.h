@@ -57,7 +57,7 @@ protected:
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapons")
 	bool bIsMoveAble = false;
 	// TODO: Change bIsMoveAble to false to prevent players from moving while choosing team
 		
@@ -141,7 +141,7 @@ public:
 	void Multi_SpawnImpactFX();
 
 	UFUNCTION(BlueprintCallable, Category="Restart")
-	void RestartPlayer();
+	void RestartPlayerOnBeginMatch();
 
 	UFUNCTION()
 	void SetPlayerColor(const FString& Color);
@@ -242,6 +242,11 @@ public:
 	void OnDeathServer();
 	bool OnDeathServer_Validate();
 	void OnDeathServer_Implementation();
+	
+	void Server_DestroyWeapons();
+
+	UFUNCTION(NetMulticast, Reliable, Category="Weapons")
+	void Multi_DestroyWeapons();
 
 	// UFUNCTION()
 	// static void ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController);

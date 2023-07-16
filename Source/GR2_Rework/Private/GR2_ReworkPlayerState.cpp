@@ -22,7 +22,7 @@ void AGR2_ReworkPlayerState::StartPlayerOnTeamChange()
 		{
 			// TODO: Remove this Destroy character function when change team
 			// Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->Destroy();
-			Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->RestartPlayer();
+			Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->RestartPlayerOnBeginMatch();
 		}
 	}
 }

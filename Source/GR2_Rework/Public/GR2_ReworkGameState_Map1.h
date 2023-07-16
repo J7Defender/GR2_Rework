@@ -36,4 +36,6 @@ public:
 	virtual void HandleMatchIsWaitingToStart() override;
 	virtual void HandleMatchHasStarted() override;
 	virtual void HandleMatchHasEnded() override;
+
+	virtual void Tick(float DeltaSeconds) override;
 };

@@ -30,3 +30,8 @@ void AGR2_ReworkGameState_Map1::HandleMatchHasEnded()
 {
 	Super::HandleMatchHasEnded();
 }
+
+void AGR2_ReworkGameState_Map1::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+}
