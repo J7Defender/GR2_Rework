@@ -3,7 +3,7 @@
 
 #include "GR2_ReworkPlayerState.h"
 
-#include "GR2_ReworkGameMode_Map1.h"
+#include "GR2_ReworkGameState_Map1.h"
 #include "GR2_Rework/GR2_ReworkCharacter.h"
 #include "Net/UnrealNetwork.h"
 
@@ -20,8 +20,6 @@ void AGR2_ReworkPlayerState::StartPlayerOnTeamChange()
 		AController* OwnerController = Cast<AController>(GetOwner());
 		if (OwnerController && OwnerController->GetCharacter())
 		{
-			// TODO: Remove this Destroy character function when change team
-			// Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->Destroy();
 			Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->RestartPlayerOnBeginMatch();
 		}
 	}
@@ -49,6 +47,15 @@ void AGR2_ReworkPlayerState::SetCustomPlayerName(const FString& Name)
 void AGR2_ReworkPlayerState::Server_SetTeam_Implementation(ETeam PlayerTeam)
 {
 	Team = PlayerTeam;
+	if (Team == Red)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlayerState] RedPlayersNum: Added"));
+		static_cast<AGR2_ReworkGameState_Map1*>(GetWorld()->GetGameState())->RedPlayersNum++;
+	} else if (Team == Blue)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[PlayerState] BluePlayersNum: Added"));
+		static_cast<AGR2_ReworkGameState_Map1*>(GetWorld()->GetGameState())->BluePlayersNum++;
+	}
 }
 
 void AGR2_ReworkPlayerState::SetTeam(ETeam PlayerTeam)

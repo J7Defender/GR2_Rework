@@ -10,6 +10,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "GR2_ReworkGameMode_Map1.h"
+#include "GR2_ReworkGameState_Map1.h"
+#include "GR2_ReworkPlayerState.h"
 #include "TP_WeaponComponent.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
@@ -67,7 +69,7 @@ void AGR2_ReworkCharacter::BeginPlay()
 		}
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::BeginPlay"))
+	// UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::BeginPlay"))
 	
 	if (GetWorld()->GetMapName() == PlayableMaps[0])
 	{
@@ -127,18 +129,14 @@ void AGR2_ReworkCharacter::OnHealthUpdate()
 {	
 	if (IsLocallyControlled())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player has %f health remaining"), CurrentHealth);
-		FString healthMessage = FString::Printf(TEXT("You now have %f health remaining."), CurrentHealth);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, healthMessage);
 		OnHealthUpdateUI();
 		if (CurrentHealth <= 0)
 		{
 			UE_LOG(LogTemp,Warning, TEXT("Player has been killed"));
-			FString deathMessage = FString::Printf(TEXT("You have been killed."));
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, deathMessage);
+			// FString deathMessage = FString::Printf(TEXT("You have been killed."));
+			// GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, deathMessage);
 
 			OnDeathServer();
-			
 			OnDeathUpdateUI();
 		}
 	}
@@ -149,73 +147,50 @@ void AGR2_ReworkCharacter::OnHealthUpdate()
 	}	
 }
 
-bool AGR2_ReworkCharacter::OnDeathServer_Validate()
-{
-	return true;
-}
-
 // void AGR2_ReworkCharacter::ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController)
 // {
 // 	GameMode->RestartPlayer(CurrentController);
 // }
 
-void AGR2_ReworkCharacter::Server_DestroyWeapons()
+void AGR2_ReworkCharacter::DestroyWeapons()
 {
 	if (CurrentWeapon != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] CurrentWeapon"));
+		// UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] CurrentWeapon"));
 		CurrentWeapon->Destroy();
 		CurrentWeapon = nullptr;
 	}
 	if (Weapon1 != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon1"));
+		// UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon1"));
 		Weapon1->Destroy();
 		Weapon1 = nullptr;
 	}
 	if (Weapon2 != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon2"));
+		// UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon2"));
 		Weapon2->Destroy();
 		Weapon2 = nullptr;
 	}
 	if (Weapon3 != nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon3"));
+		// UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon3"));
 		Weapon3->Destroy();
 		Weapon3 = nullptr;
 	}
+}
+
+void AGR2_ReworkCharacter::Server_DestroyWeapons()
+{
+	DestroyWeapons();
 }
 
 void AGR2_ReworkCharacter::Multi_DestroyWeapons_Implementation()
 {
-	if (CurrentWeapon != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] CurrentWeapon"));
-		CurrentWeapon->Destroy();
-		CurrentWeapon = nullptr;
-	}
-	if (Weapon1 != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon1"));
-		Weapon1->Destroy();
-		Weapon1 = nullptr;
-	}
-	if (Weapon2 != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon2"));
-		Weapon2->Destroy();
-		Weapon2 = nullptr;
-	}
-	if (Weapon3 != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[DestroyWeaponOnKilled] Weapon3"));
-		Weapon3->Destroy();
-		Weapon3 = nullptr;
-	}
+	DestroyWeapons();
 }
 
-void AGR2_ReworkCharacter::OnDeathServer_Implementation()
+void AGR2_ReworkCharacter::OnDeathServer_Implementation(bool bIsInitialSpawn)
 {
 	UE_LOG(LogTemp, Warning, TEXT("[Server] Player has been killed"));
 	
@@ -227,6 +202,12 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 		return;
 	}
 
+	// Update Team's Score
+	if (GetLocalRole() == ROLE_Authority && !bIsInitialSpawn)
+	{
+		GetWorld()->GetGameState<AGR2_ReworkGameState_Map1>()->Server_UpdateScore(GetController());
+	}
+
 	// Destroy weapon actors
 	Server_DestroyWeapons();
 	Multi_DestroyWeapons();
@@ -236,8 +217,14 @@ void AGR2_ReworkCharacter::OnDeathServer_Implementation()
 
 	if (const UWorld* World = GetWorld())
 	{
-		if (AGR2_ReworkGameMode_Map1* GameMode = Cast<AGR2_ReworkGameMode_Map1>(World->GetAuthGameMode()))
-			{ GameMode->RestartPlayerTimer(CurrentController); }
+		AGR2_ReworkGameMode_Map1* GameMode = Cast<AGR2_ReworkGameMode_Map1>(World->GetAuthGameMode());
+		if (bIsInitialSpawn)
+		{
+			GameMode->RestartPlayer(CurrentController);
+		} else
+		{
+			GameMode->RestartPlayerTimer(CurrentController);
+		}
 	}
 }
 
@@ -248,7 +235,7 @@ void AGR2_ReworkCharacter::OnDeathUpdateUI_Implementation()
 
 void AGR2_ReworkCharacter::Client_DisplayChooseTeamWidget_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[Client] Client_DisplayChooseTeamWidget"))
+	// UE_LOG(LogTemp, Warning, TEXT("[Client] Client_DisplayChooseTeamWidget"))
 	
 	DisplayChooseTeamWidget();
 }
@@ -284,7 +271,7 @@ void AGR2_ReworkCharacter::SetCurrentHealth(float healthValue)
 float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent,
 	AController* EventInstigator, AActor* DamageCauser)
 {
-	UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
+	// UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
 
 	SetCurrentHealth(GetCurrentHealth() - DamageAmount);
 
@@ -310,18 +297,18 @@ void AGR2_ReworkCharacter::FinishSlowdown()
 
 void AGR2_ReworkCharacter::Server_PlayFireSound_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
+	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
 	
 	Multi_PlayFireSound();
 }
 
 void AGR2_ReworkCharacter::Multi_PlayFireSound_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"));
-	UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Location: %f, %f, %f"), CurrentWeapon->GetActorLocation().X, CurrentWeapon->GetActorLocation().Y, CurrentWeapon->GetActorLocation().Z);
+	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"));
+	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Location: %f, %f, %f"), CurrentWeapon->GetActorLocation().X, CurrentWeapon->GetActorLocation().Y, CurrentWeapon->GetActorLocation().Z);
 	if (GetLocalRole() == ROLE_SimulatedProxy)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *GetName());
+		// UE_LOG(LogTemp, Warning, TEXT("%s"), *GetName());
 		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(CurrentWeapon->WeaponComponent, CurrentWeapon->WeaponComponent->FireSound, CurrentWeapon->GetActorLocation());
 	}
 }
@@ -367,9 +354,9 @@ void AGR2_ReworkCharacter::Multi_SpawnImpactFX_Implementation()
 
 void AGR2_ReworkCharacter::RestartPlayerOnBeginMatch()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::RestartPlayerOnBeginMatch"));
+	// UE_LOG(LogTemp, Warning, TEXT("AGR2_ReworkCharacter::RestartPlayerOnBeginMatch"));
 	CharacterHUD->RemoveFromParent();
-	OnDeathServer();
+	OnDeathServer(true);
 }
 
 void AGR2_ReworkCharacter::SetPlayerColor(const FString& Color)
@@ -383,7 +370,8 @@ void AGR2_ReworkCharacter::SetPlayerColor(const FString& Color)
 void AGR2_ReworkCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
-	bIsMoveAble = static_cast<AGR2_ReworkPlayerState*>(GetPlayerState())->Team != None;
+	
+	bIsMoveAble = GetPlayerState<AGR2_ReworkPlayerState>()->Team != None;
 }
 
 void AGR2_ReworkCharacter::Move(const FInputActionValue& Value)
@@ -414,13 +402,13 @@ void AGR2_ReworkCharacter::Look(const FInputActionValue& Value)
 
 void AGR2_ReworkCharacter::StartCrouch()
 {
-	UE_LOG(LogTemp, Warning, TEXT("StartCrouch"));
+	// UE_LOG(LogTemp, Warning, TEXT("StartCrouch"));
 	Crouch();
 }
 
 void AGR2_ReworkCharacter::StopCrouch()
 {
-	UE_LOG(LogTemp, Warning, TEXT("StopCrouch"));
+	// UE_LOG(LogTemp, Warning, TEXT("StopCrouch"));
 	UnCrouch();
 }
 

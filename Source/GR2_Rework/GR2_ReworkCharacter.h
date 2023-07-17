@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_ReworkPlayerState.h"
 #include "GR2_ReworkWeapon.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
@@ -238,12 +237,11 @@ public:
 	/** Response to health being updated. Called on immediately after modification, and on clients in response to a RepNotify */
 	void OnHealthUpdate();
 	
-	UFUNCTION(Server, Reliable, WithValidation)
-	void OnDeathServer();
-	bool OnDeathServer_Validate();
-	void OnDeathServer_Implementation();
+	UFUNCTION(Server, Reliable)
+	void OnDeathServer(bool bIsInitialSpawn = false);
 	
 	void Server_DestroyWeapons();
+	void DestroyWeapons();
 
 	UFUNCTION(NetMulticast, Reliable, Category="Weapons")
 	void Multi_DestroyWeapons();

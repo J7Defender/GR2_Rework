@@ -7,4 +7,3 @@ GR2_ReworkHUDManager::GR2_ReworkHUDManager()
 {
 	
 }
-

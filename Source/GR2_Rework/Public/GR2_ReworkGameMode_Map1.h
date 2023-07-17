@@ -10,6 +10,15 @@
  * 
  */
 
+UENUM(BlueprintType)
+enum class EMatchState : uint8
+{
+	E_Default			UMETA(DisplayName = "NO_STAGE"),
+	E_WarmUp			UMETA(DisplayName = "WARM_UP"),
+	E_InMatch			UMETA(DisplayName = "IN_MATCH"),
+	E_PostMatch			UMETA(DisplayName = "POST_MATCH")
+};
+
 UCLASS()
 class GR2_REWORK_API AGR2_ReworkGameMode_Map1 : public AGR2_ReworkGameMode
 {
@@ -18,6 +27,9 @@ class GR2_REWORK_API AGR2_ReworkGameMode_Map1 : public AGR2_ReworkGameMode
 public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="Control")
 	bool bIsPlayable = true;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="PlayerControllers")
+	TArray<AController*> PlayerControllers;
 
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category="Rules")
 	int WinningScore = 100;
@@ -43,12 +55,14 @@ public:
 	virtual void RestartPlayer(AController* NewPlayer) override;
 	virtual void RestartPlayerAtPlayerStart(AController* NewPlayer, AActor* StartSpot) override;
 
+	UFUNCTION(BlueprintCallable, Category="Players")
+	void RestartAllPlayers();
+
+	void FreezeAllPlayers();
+
+	virtual void BeginPlay() override;
+
 	virtual void Logout(AController* Exiting) override;
 
-	virtual void HandleMatchIsWaitingToStart() override;
-	virtual void HandleMatchHasStarted() override;
-	virtual void HandleMatchHasEnded() override;
-
-	virtual bool ReadyToStartMatch_Implementation() override;
-	virtual bool ReadyToEndMatch_Implementation() override;
+	virtual void Tick(float DeltaSeconds) override;
 };

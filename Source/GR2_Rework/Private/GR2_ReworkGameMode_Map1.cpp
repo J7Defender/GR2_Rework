@@ -3,14 +3,15 @@
 #include "GR2_ReworkGameMode_Map1.h"
 
 #include "GR2_ReworkGameState_Map1.h"
+#include "GR2_ReworkPlayerState.h"
 #include "GR2_Rework/GR2_ReworkCharacter.h"
 
 void AGR2_ReworkGameMode_Map1::RestartPlayerTimer(AController* CurrentController)
 {
 	if (const UWorld* World = GetWorld())
 	{
-		FTimerHandle RespawnTimerHandler;
 		FTimerDelegate RespawnTimerDelegate;
+		FTimerHandle RespawnTimerHandler;
 		
 		UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] AGR2_ReworkGameMode_Map1::RestartPlayerTimer"));
 
@@ -23,10 +24,10 @@ void AGR2_ReworkGameMode_Map1::RestartPlayerTimer(AController* CurrentController
 void AGR2_ReworkGameMode_Map1::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
-
-	static_cast<AGR2_ReworkCharacter*>(NewPlayer->GetCharacter())->Client_DisplayChooseTeamWidget();
 	
 	UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] Player Logged in. NumPlayers: %d"), GetNumPlayers());
+	PlayerControllers.Add(NewPlayer);
+	static_cast<AGR2_ReworkCharacter*>(NewPlayer->GetCharacter())->Client_DisplayChooseTeamWidget();
 }
 
 void AGR2_ReworkGameMode_Map1::RestartPlayer(AController* NewPlayer)
@@ -38,6 +39,13 @@ void AGR2_ReworkGameMode_Map1::RestartPlayer(AController* NewPlayer)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[AGR2_ReworkGameMode_Map1::RestartPlayer] NULL or Player Disconnected"))
 		return;
+	}
+
+	if (NewPlayer->GetCharacter() != nullptr)
+	{
+		static_cast<AGR2_ReworkCharacter*>(NewPlayer->GetCharacter())->Server_DestroyWeapons();
+		static_cast<AGR2_ReworkCharacter*>(NewPlayer->GetCharacter())->Multi_DestroyWeapons();
+		NewPlayer->GetCharacter()->Destroy();
 	}
 	
 	if (NewPlayer->GetPlayerState<AGR2_ReworkPlayerState>()->Team == ETeam::None)
@@ -57,66 +65,58 @@ void AGR2_ReworkGameMode_Map1::RestartPlayerAtPlayerStart(AController* NewPlayer
 	Super::RestartPlayerAtPlayerStart(NewPlayer, StartSpot);
 }
 
+void AGR2_ReworkGameMode_Map1::RestartAllPlayers()
+{
+	for (const auto PlayerController: PlayerControllers)
+	{
+		RestartPlayer(PlayerController);
+	}
+}
+
+void AGR2_ReworkGameMode_Map1::FreezeAllPlayers()
+{
+	for (const auto PlayerController: PlayerControllers)
+	{
+		AGR2_ReworkCharacter* Character = static_cast<AGR2_ReworkCharacter*>(PlayerController->GetCharacter());
+		Character->bIsMoveAble = false;
+	}
+}
+
+void AGR2_ReworkGameMode_Map1::BeginPlay()
+{
+	Super::BeginPlay();
+
+	GetGameState<AGR2_ReworkGameState_Map1>()->GameMatchState = EMatchState::E_Default;
+}
+
 void AGR2_ReworkGameMode_Map1::Logout(AController* Exiting)
 {
 	if (Exiting->GetPlayerState<AGR2_ReworkPlayerState>()->Team == ETeam::Blue)
 	{
-		GetGameState<AGR2_ReworkGameState_Map1>()->BluePlayers.Remove(Exiting->GetPlayerState<AGR2_ReworkPlayerState>());
-	} else
+		if (GetGameState<AGR2_ReworkGameState_Map1>()->BluePlayersNum > 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[GameMode]Minus Blue Player"));
+			GetGameState<AGR2_ReworkGameState_Map1>()->BluePlayersNum--;
+		}
+	} else if (Exiting->GetPlayerState<AGR2_ReworkPlayerState>()->Team == ETeam::Red)
 	{
-		GetGameState<AGR2_ReworkGameState_Map1>()->RedPlayers.Remove(Exiting->GetPlayerState<AGR2_ReworkPlayerState>());
+		if (GetGameState<AGR2_ReworkGameState_Map1>()->RedPlayersNum > 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[GameMode]Minus Red Player"));
+			GetGameState<AGR2_ReworkGameState_Map1>()->RedPlayersNum--;
+		}
 	}
+
+	PlayerControllers.Remove(Exiting);
 	
 	Super::Logout(Exiting);
 	
 	UE_LOG(LogTemp, Warning, TEXT("[GAME_MODE] Player Logged out. Remaining NumPlayers: %d"), GetNumPlayers());
 }
 
-void AGR2_ReworkGameMode_Map1::HandleMatchIsWaitingToStart()
+void AGR2_ReworkGameMode_Map1::Tick(float DeltaSeconds)
 {
-	Super::HandleMatchIsWaitingToStart();
-	
-	GetGameState<AGR2_ReworkGameState_Map1>()->RemainingTime = WarmUpTime;
-}
+	Super::Tick(DeltaSeconds);
 
-void AGR2_ReworkGameMode_Map1::HandleMatchHasStarted()
-{
-	Super::HandleMatchHasStarted();
-
-	GetGameState<AGR2_ReworkGameState_Map1>()->RemainingTime = MatchTime;
-}
-
-void AGR2_ReworkGameMode_Map1::HandleMatchHasEnded()
-{
-	Super::HandleMatchHasEnded();
-
-	GetGameState<AGR2_ReworkGameState_Map1>()->RemainingTime = EndMatchTime;
-}
-
-bool AGR2_ReworkGameMode_Map1::ReadyToStartMatch_Implementation()
-{
-	//TODO: [Start Match] Return true when each side has at least one player
-	
-	// if (GetNumPlayers() >= 2)
-	// {
-	// 	return true;
-	// }
-	// return false;
-
-	return Super::ReadyToStartMatch_Implementation();
-}
-
-bool AGR2_ReworkGameMode_Map1::ReadyToEndMatch_Implementation()
-{
-	if (GetGameState<AGR2_ReworkGameState_Map1>()->BlueTeamScore >= WinningScore || GetGameState<AGR2_ReworkGameState_Map1>()->RedTeamScore >= WinningScore)
-	{
-		return true;
-	}
-	
-	if (GetGameState<AGR2_ReworkGameState_Map1>()->RemainingTime <= 0)
-	{
-		return true;
-	}
-
-	return false;
+	// UE_LOG(LogTemp, Warning, TEXT("RemainingTime: %d"), GetGameState<AGR2_ReworkGameState_Map1>()->RemainingTime);
 }
