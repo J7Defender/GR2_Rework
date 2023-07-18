@@ -24,10 +24,6 @@ class AGR2_ReworkCharacter : public ACharacter
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	USkeletalMeshComponent* Mesh1P;
 
-	/** Pawn mesh: 3rd person view */
-	UPROPERTY(VisibleDefaultsOnly, Category=Mesh, Replicated)
-	USkeletalMeshComponent* Mesh3P;
-
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
@@ -55,6 +51,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	/** Pawn mesh: 3rd person view */
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category=Mesh, Replicated)
+	USkeletalMeshComponent* Mesh3P;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapons")
 	bool bIsMoveAble = false;
@@ -288,4 +288,7 @@ public:
 	/** Event for taking damage. Overridden from APawn.*/
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Damage")
+	AGR2_ReworkCharacter* LastDamageDealer;
 };

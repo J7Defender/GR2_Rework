@@ -273,7 +273,23 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 {
 	// UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
 	
+	/** Check if hitting allies */
+	const ETeam DamageDealerTeam = static_cast<AGR2_ReworkCharacter*>(DamageCauser)->GetPlayerState<AGR2_ReworkPlayerState>()->Team;
+	const ETeam HitPlayerTeam = GetPlayerState<AGR2_ReworkPlayerState>()->Team;
+
+	if (HitPlayerTeam == NULL)
+	{
+		return 0;
+	}
+	if (DamageDealerTeam == HitPlayerTeam)
+	{
+		// UE_LOG(LogTemp, Warning, TEXT("Hitting allies"));
+		return 0;
+	}
+	
 	SetCurrentHealth(GetCurrentHealth() - DamageAmount);
+
+	LastDamageDealer = static_cast<AGR2_ReworkCharacter*>(DamageCauser);
 
 	SlowDownOnHit();
 	
@@ -488,7 +504,7 @@ bool AGR2_ReworkCharacter::Server_OnDealDamage_Validate(FHitResult HitResult, in
 }
 
 void AGR2_ReworkCharacter::Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser)
-{
+{	
 	UGameplayStatics::ApplyPointDamage(HitResult.GetActor(), Damage, HitFrom, HitResult, DamageCauser->GetController(), DamageCauser, UDamageType::StaticClass());
 }
 

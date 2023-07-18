@@ -15,14 +15,21 @@ AGR2_ReworkPlayerState::AGR2_ReworkPlayerState()
 
 void AGR2_ReworkPlayerState::StartPlayerOnTeamChange()
 {
-	if (GetOwner())
+	AGR2_ReworkCharacter* Character = GetOwnerCharacter();
+	if (Character != nullptr)
 	{
-		AController* OwnerController = Cast<AController>(GetOwner());
-		if (OwnerController && OwnerController->GetCharacter())
-		{
-			Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter())->RestartPlayerOnBeginMatch();
-		}
+		Character->RestartPlayerOnBeginMatch();
 	}
+}
+
+AGR2_ReworkCharacter* AGR2_ReworkPlayerState::GetOwnerCharacter()
+{
+	AController* OwnerController = Cast<AController>(GetOwner());
+	if (OwnerController && OwnerController->GetCharacter())
+	{
+		return Cast<AGR2_ReworkCharacter>(OwnerController->GetCharacter());
+	}
+	return nullptr;
 }
 
 void AGR2_ReworkPlayerState::OnRep_Team()

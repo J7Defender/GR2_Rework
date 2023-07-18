@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
+#include "GR2_Rework/GR2_ReworkCharacter.h"
 #include "GR2_ReworkPlayerState.generated.h"
 
 /**
@@ -26,6 +27,9 @@ public:
 	TEnumAsByte<ETeam> Team = ETeam::None;
 
 	void StartPlayerOnTeamChange();
+
+	UFUNCTION(BlueprintCallable, Category="Character")
+	AGR2_ReworkCharacter* GetOwnerCharacter();
 	
 	UFUNCTION()
 	void OnRep_Team();
