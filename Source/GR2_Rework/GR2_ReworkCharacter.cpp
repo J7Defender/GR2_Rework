@@ -272,7 +272,7 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	AController* EventInstigator, AActor* DamageCauser)
 {
 	// UE_LOG(LogTemp, Warning, TEXT("TakeDamage"));
-
+	
 	SetCurrentHealth(GetCurrentHealth() - DamageAmount);
 
 	SlowDownOnHit();

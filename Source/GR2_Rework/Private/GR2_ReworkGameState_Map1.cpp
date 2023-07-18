@@ -129,7 +129,7 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 
 				ResetScore();
 
-				UpdateMatchStateUI(EMatchState::E_InMatch);
+				Multi_UpdateMatchStateUI(EMatchState::E_InMatch);
 				
 				return;
 			}
@@ -155,7 +155,7 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 				Multi_UpdateWinnerUI(0);
 			}
 
-			UpdateMatchStateUI(EMatchState::E_PostMatch);
+			Multi_UpdateMatchStateUI(EMatchState::E_PostMatch);
 			
 			return;
 		}
@@ -168,7 +168,7 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 			RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->WarmUpTime;
 			GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
 
-			UpdateMatchStateUI(EMatchState::E_WarmUp);
+			Multi_UpdateMatchStateUI(EMatchState::E_WarmUp);
 			
 			ResetScore();
 		}
