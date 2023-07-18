@@ -295,21 +295,21 @@ void AGR2_ReworkCharacter::FinishSlowdown()
 	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_SlowEffectTimer);
 }
 
-void AGR2_ReworkCharacter::Server_PlayFireSound_Implementation()
+void AGR2_ReworkCharacter::Server_PlayFireSound_Implementation(USoundBase* FFireSound)
 {
 	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Call to Server"));
 	
-	Multi_PlayFireSound();
+	Multi_PlayFireSound(FFireSound);
 }
 
-void AGR2_ReworkCharacter::Multi_PlayFireSound_Implementation()
+void AGR2_ReworkCharacter::Multi_PlayFireSound_Implementation(USoundBase* FFireSound)
 {
 	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Multicast to Clients"));
 	// UE_LOG(LogTemp, Warning, TEXT("[PlaySoundAt] Location: %f, %f, %f"), CurrentWeapon->GetActorLocation().X, CurrentWeapon->GetActorLocation().Y, CurrentWeapon->GetActorLocation().Z);
 	if (GetLocalRole() == ROLE_SimulatedProxy)
 	{
 		// UE_LOG(LogTemp, Warning, TEXT("%s"), *GetName());
-		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(CurrentWeapon->WeaponComponent, CurrentWeapon->WeaponComponent->FireSound, CurrentWeapon->GetActorLocation());
+		CurrentWeapon->WeaponComponent->WeaponFXHandler->SpawnSoundFXAt(CurrentWeapon->WeaponComponent, FFireSound, CurrentWeapon->GetActorLocation());
 	}
 }
 

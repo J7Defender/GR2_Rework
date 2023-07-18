@@ -116,10 +116,10 @@ public:
 	void Server_OnDealDamage_Implementation(FHitResult HitResult, int Damage, FVector HitFrom, AGR2_ReworkCharacter* DamageCauser);
 
 	UFUNCTION(Server, Unreliable)
-	void Server_PlayFireSound();
+	void Server_PlayFireSound(USoundBase* FFireSound);
 
 	UFUNCTION(NetMulticast, Unreliable)
-	void Multi_PlayFireSound();
+	void Multi_PlayFireSound(USoundBase* FFireSound);
 
 	UFUNCTION(Server, Unreliable)
 	void Server_SpawnMuzzleFlashFX();

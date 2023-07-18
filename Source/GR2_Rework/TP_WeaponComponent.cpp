@@ -64,7 +64,7 @@ void UTP_WeaponComponent::Fire()
 		WeaponFXHandler->SpawnSoundFXAt(this, FireSoundPersonal, Character->GetActorLocation());
 
 		// Replicate sound to all players
-		Character->Server_PlayFireSound();
+		Character->Server_PlayFireSound(FireSound);
 	}
 	
 	// Try and play a firing animation if specified

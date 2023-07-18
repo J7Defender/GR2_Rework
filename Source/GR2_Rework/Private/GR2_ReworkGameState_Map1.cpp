@@ -18,6 +18,7 @@ void AGR2_ReworkGameState_Map1::GetLifetimeReplicatedProps(TArray<FLifetimePrope
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, RemainingTime);
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, BluePlayersNum);
 	DOREPLIFETIME(AGR2_ReworkGameState_Map1, RedPlayersNum);
+	DOREPLIFETIME(AGR2_ReworkGameState_Map1, GameMatchState);
 }
 
 void AGR2_ReworkGameState_Map1::ResetScore()
@@ -60,6 +61,17 @@ void AGR2_ReworkGameState_Map1::OnRep_TimerUpdate()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[GameState]OnRep_TimerUpdate"));
 	Multi_UpdateTimerUI();
+}
+
+void AGR2_ReworkGameState_Map1::UpdateMatchStateUI_Implementation(EMatchState FMatchState)
+{
+	// Implemented in Blueprints
+}
+
+void AGR2_ReworkGameState_Map1::Multi_UpdateMatchStateUI_Implementation(EMatchState FMatchState)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[GameState]Multi_UpdateMatchStateUI"));
+	UpdateMatchStateUI(FMatchState);
 }
 
 void AGR2_ReworkGameState_Map1::UpdateWinnerUI_Implementation(int WinnerIndex)
@@ -105,6 +117,7 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 {
 	if (HasAuthority())
 	{
+		/** Switch to InMatch */
 		if (GameMatchState == EMatchState::E_WarmUp)
 		{
 			if (IsReadyToStartMatch())
@@ -115,11 +128,14 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 				GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
 
 				ResetScore();
+
+				UpdateMatchStateUI(EMatchState::E_InMatch);
 				
 				return;
 			}
 		}
 
+		/** Switch to PostMatch */
 		if (GameMatchState == EMatchState::E_InMatch)
 		{
 			GameMatchState = EMatchState::E_PostMatch;
@@ -138,26 +154,25 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 			{
 				Multi_UpdateWinnerUI(0);
 			}
+
+			UpdateMatchStateUI(EMatchState::E_PostMatch);
 			
 			return;
 		}
 
+		/** Switch to WarmUp */
 		if (GameMatchState == EMatchState::E_PostMatch || GameMatchState == EMatchState::E_Default)
 		{
 			GameMatchState = EMatchState::E_WarmUp;
 			UE_LOG(LogTemp, Warning, TEXT("Changing State to E_WarmUp"));
 			RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->WarmUpTime;
 			GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
+
+			UpdateMatchStateUI(EMatchState::E_WarmUp);
 			
 			ResetScore();
 		}
 	}
-}
-
-void AGR2_ReworkGameState_Map1::SetRemainingTime(const int FRemainingTime)
-{
-	UE_LOG(LogTemp, Warning, TEXT("[GameState]SetRemainingTime"));
-	RemainingTime = FRemainingTime;
 }
 
 bool AGR2_ReworkGameState_Map1::IsReadyToStartMatch() const

@@ -32,15 +32,12 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
 	int BluePlayersNum = 0;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="MatchState")
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category="MatchState", Replicated)
 	EMatchState GameMatchState;
 
 	/** FUNCTIONS */
 	UFUNCTION(BlueprintCallable, Category="States")
 	void TryChangeMatchState();
-
-	UFUNCTION(BlueprintCallable, Category="Timer")
-	void SetRemainingTime(int FRemainingTime);
 
 	UFUNCTION(BlueprintCallable, Category="Score")
 	void ResetScore();
@@ -73,4 +70,10 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="WinAnnouce")
 	void UpdateWinnerUI(int WinnerIndex);
+
+	UFUNCTION(NetMulticast, Reliable, Category="WinAnnouce")
+	void Multi_UpdateMatchStateUI(EMatchState FMatchState);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="MatchState")
+	void UpdateMatchStateUI(EMatchState FMatchState);
 };
