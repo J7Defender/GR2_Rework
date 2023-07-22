@@ -123,12 +123,12 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 			{
 				GameMatchState = EMatchState::E_InMatch;
 				UE_LOG(LogTemp, Warning, TEXT("Changing State to E_InMatch"));
-				RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->MatchTime;
-				GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
+				Multi_UpdateMatchStateUI(EMatchState::E_InMatch);
 
 				ResetScore();
-
-				Multi_UpdateMatchStateUI(EMatchState::E_InMatch);
+				RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->MatchTime;
+				
+				GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
 				
 				return;
 			}
@@ -139,6 +139,9 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 		{
 			GameMatchState = EMatchState::E_PostMatch;
 			UE_LOG(LogTemp, Warning, TEXT("Changing State to E_PostMatch"));
+
+			Multi_UpdateMatchStateUI(EMatchState::E_PostMatch);
+			
 			RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->EndMatchTime;
 
 			GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->FreezeAllPlayers();
@@ -153,8 +156,6 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 			{
 				Multi_UpdateWinnerUI(0);
 			}
-
-			Multi_UpdateMatchStateUI(EMatchState::E_PostMatch);
 			
 			return;
 		}
@@ -164,12 +165,12 @@ void AGR2_ReworkGameState_Map1::TryChangeMatchState()
 		{
 			GameMatchState = EMatchState::E_WarmUp;
 			UE_LOG(LogTemp, Warning, TEXT("Changing State to E_WarmUp"));
-			RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->WarmUpTime;
-			GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
-
 			Multi_UpdateMatchStateUI(EMatchState::E_WarmUp);
+			RemainingTime = GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->WarmUpTime;
 			
 			ResetScore();
+			
+			GetWorld()->GetAuthGameMode<AGR2_ReworkGameMode_Map1>()->RestartAllPlayers();
 		}
 	}
 }

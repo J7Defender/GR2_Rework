@@ -275,12 +275,11 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	
 	/** Check if hitting allies */
 	const ETeam DamageDealerTeam = static_cast<AGR2_ReworkCharacter*>(DamageCauser)->GetPlayerState<AGR2_ReworkPlayerState>()->Team;
-	const ETeam HitPlayerTeam = GetPlayerState<AGR2_ReworkPlayerState>()->Team;
 
-	if (HitPlayerTeam == NULL)
-	{
-		return 0;
-	}
+	const AGR2_ReworkPlayerState* HitPlayerState = GetPlayerState<AGR2_ReworkPlayerState>();
+	if (HitPlayerState == nullptr) { return 0; }
+	
+	const ETeam HitPlayerTeam = GetPlayerState<AGR2_ReworkPlayerState>()->Team;
 	if (DamageDealerTeam == HitPlayerTeam)
 	{
 		// UE_LOG(LogTemp, Warning, TEXT("Hitting allies"));
