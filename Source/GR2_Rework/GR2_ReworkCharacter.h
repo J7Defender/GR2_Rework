@@ -53,7 +53,7 @@ protected:
 public:
 
 	/** Pawn mesh: 3rd person view */
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category=Mesh, Replicated)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category=Mesh, Replicated)
 	USkeletalMeshComponent* Mesh3P;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapons")
@@ -291,4 +291,25 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Damage")
 	AGR2_ReworkCharacter* LastDamageDealer;
+
+	UFUNCTION(BlueprintCallable, Category="Color")
+	void SetColor(bool bIsRed);
+
+	UFUNCTION(Server, Reliable, Category="Color")
+	void Server_SetColor(bool bIsRed);
+
+	UFUNCTION(NetMulticast, Reliable, Category="Color")
+	void Multi_SetColor(bool bIsRed);
+
+	UFUNCTION(BlueprintNativeEvent, Category="Color")
+	void BP_SetColor(bool bIsRed);
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Mesh3P")
+	USkeletalMesh* RedMesh3P;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Mesh3P")
+	USkeletalMesh* BlueMesh3P;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Movement")
+	bool bCrouchButtonDown = false;
 };

@@ -62,11 +62,21 @@ void AGR2_ReworkPlayerState::Server_SetTeam_Implementation(ETeam PlayerTeam)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[PlayerState] BluePlayersNum: Added"));
 		static_cast<AGR2_ReworkGameState_Map1*>(GetWorld()->GetGameState())->BluePlayersNum++;
+
+		
 	}
 }
 
 void AGR2_ReworkPlayerState::SetTeam(ETeam PlayerTeam)
 {
+	AGR2_ReworkCharacter* Character = GetOwnerCharacter();
+	if (PlayerTeam == Red)
+	{
+		Character->SetColor(true);
+	} else if (PlayerTeam == Blue)
+	{
+		Character->SetColor(false);
+	}
 	Server_SetTeam(PlayerTeam);
 }
 

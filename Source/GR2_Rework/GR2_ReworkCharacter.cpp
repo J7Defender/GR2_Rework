@@ -295,6 +295,31 @@ float AGR2_ReworkCharacter::TakeDamage(float DamageAmount, FDamageEvent const& D
 	return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 }
 
+void AGR2_ReworkCharacter::SetColor(bool bIsRed)
+{
+	// BP_SetColor(bIsRed);
+	Server_SetColor(bIsRed);
+}
+
+void AGR2_ReworkCharacter::BP_SetColor_Implementation(bool bIsRed)
+{
+	// Implemented in Blueprints
+}
+
+void AGR2_ReworkCharacter::Multi_SetColor_Implementation(bool bIsRed)
+{
+	// if (GetLocalRole() == ROLE_SimulatedProxy)
+	// {
+	// 	BP_SetColor(bIsRed);
+	// }
+}
+
+void AGR2_ReworkCharacter::Server_SetColor_Implementation(bool bIsRed)
+{
+	// Multi_SetColor(bIsRed);
+	BP_SetColor(bIsRed);
+}
+
 void AGR2_ReworkCharacter::SlowDownOnHit()
 {
 	MovementSpeedMultiplier = OnHitMovementSpeedMultiplier;
@@ -419,12 +444,14 @@ void AGR2_ReworkCharacter::StartCrouch()
 {
 	// UE_LOG(LogTemp, Warning, TEXT("StartCrouch"));
 	Crouch();
+	bCrouchButtonDown = true;
 }
 
 void AGR2_ReworkCharacter::StopCrouch()
 {
 	// UE_LOG(LogTemp, Warning, TEXT("StopCrouch"));
 	UnCrouch();
+	bCrouchButtonDown = false;
 }
 
 void AGR2_ReworkCharacter::OnPrimaryWeaponChoose()
