@@ -2,17 +2,17 @@
 
 #include "GR2_ReworkCharacter.h"
 
-#include "GR2_Rework.h"
+#include "../GR2_Rework.h"
 
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "GR2_ReworkGameMode_Map1.h"
-#include "GR2_ReworkGameState_Map1.h"
+#include "../Server/GameMode/GR2_ReworkGameMode_Map1.h"
+#include "../Server/GameState/GR2_ReworkGameState_Map1.h"
 #include "GR2_ReworkPlayerState.h"
-#include "TP_WeaponComponent.h"
+#include "../WeaponManager/Components/TP_WeaponComponent.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -144,7 +144,7 @@ void AGR2_ReworkCharacter::OnHealthUpdate()
 	if (HasAuthority())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("%s now has %f health remaining."), *GetFName().ToString(), CurrentHealth);
-	}	
+	}
 }
 
 // void AGR2_ReworkCharacter::ServerRestartPlayer(AGR2_ReworkGameMode* GameMode, AController* CurrentController)

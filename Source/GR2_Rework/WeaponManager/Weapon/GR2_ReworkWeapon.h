@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GR2_ReworkAmmunitionManager.h"
-#include "GR2_ReworkBulletImpactEffects.h"
+#include "../Effect/GR2_ReworkBulletImpactEffects.h"
 #include "GameFramework/Actor.h"
 #include "GR2_ReworkWeapon.generated.h"
 

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_ReworkWeapon.h"
+#include "../WeaponManager/Weapon/GR2_ReworkWeapon.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "GR2_ReworkCharacter.generated.h"

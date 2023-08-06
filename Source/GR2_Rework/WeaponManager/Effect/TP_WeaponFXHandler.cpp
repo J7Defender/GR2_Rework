@@ -6,7 +6,8 @@
 #include "GR2_Rework/GR2_Rework.h"
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
-#include "Sound/SoundCue.h"
+#include "../Effect/GR2_ReworkBulletImpactEffects.h"
+#include "../Components/TP_WeaponComponent.h"
 
 UTP_WeaponFXHandler::UTP_WeaponFXHandler()
 {

@@ -3,8 +3,7 @@
 
 #include "GR2_ReworkWeapon.h"
 
-#include "GR2_ReworkAmmunitionManager.h"
-#include "GR2_Rework/TP_WeaponComponent.h"
+#include "../Components/TP_WeaponComponent.h"
 #include "Net/UnrealNetwork.h"
 
 // Sets default values

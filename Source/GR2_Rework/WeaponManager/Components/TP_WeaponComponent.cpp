@@ -3,7 +3,8 @@
 
 #include "TP_WeaponComponent.h"
 
-#include "GR2_ReworkCharacter.h"
+#include "../../Character/GR2_ReworkCharacter.h"
+#include "../Effect/GR2_ReworkBulletImpactEffects.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "EnhancedInputSubsystems.h"
@@ -103,9 +104,7 @@ void UTP_WeaponComponent::AttachWeaponToCharacter()
 }
 
 void UTP_WeaponComponent::AttachWeapon(AGR2_ReworkCharacter* TargetCharacter)
-{
-	bool CurrentWeaponSet = false;
-	
+{	
 	Character = TargetCharacter;
 	if (Character == nullptr)
 	{

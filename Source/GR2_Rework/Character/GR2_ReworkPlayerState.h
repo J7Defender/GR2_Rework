@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
-#include "GR2_Rework/GR2_ReworkCharacter.h"
+#include "GR2_ReworkCharacter.h"
 #include "GR2_ReworkPlayerState.generated.h"
 
 /**

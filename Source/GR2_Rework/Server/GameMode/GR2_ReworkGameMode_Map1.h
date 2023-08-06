@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_Rework/GR2_ReworkGameMode.h"
+#include "GR2_ReworkGameMode.h"
 #include "GR2_ReworkGameMode_Map1.generated.h"
 
 /**

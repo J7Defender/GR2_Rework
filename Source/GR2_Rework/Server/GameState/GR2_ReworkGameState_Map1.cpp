@@ -3,8 +3,8 @@
 
 #include "GR2_ReworkGameState_Map1.h"
 
-#include "GR2_ReworkGameMode_Map1.h"
-#include "GR2_ReworkPlayerState.h"
+#include "../GameMode/GR2_ReworkGameMode_Map1.h"
+#include "../../Character/GR2_ReworkPlayerState.h"
 #include "Net/UnrealNetwork.h"
 
 void AGR2_ReworkGameState_Map1::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

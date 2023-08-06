@@ -3,9 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_ReworkWeapon.h"
+#include "../Weapon/GR2_ReworkWeapon.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "GR2_Rework/TP_WeaponComponent.h"
 
 class UTP_WeaponComponent;
 

@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GR2_ReworkWeapon.h"
-#include "TP_WeaponFXHandler.h"
+#include "../Weapon/GR2_ReworkWeapon.h"
+#include "../Effect/TP_WeaponFXHandler.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "TP_WeaponComponent.generated.h"
 

@@ -3,8 +3,8 @@
 
 #include "GR2_ReworkPlayerState.h"
 
-#include "GR2_ReworkGameState_Map1.h"
-#include "GR2_Rework/GR2_ReworkCharacter.h"
+#include "../Server/GameState/GR2_ReworkGameState_Map1.h"
+#include "GR2_ReworkCharacter.h"
 #include "Net/UnrealNetwork.h"
 
 
