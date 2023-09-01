@@ -40,8 +40,22 @@ void UTP_WeaponComponent::Fire()
 
 	Character->GetController()->GetPlayerViewPoint(Location, Rotation);
 
+	float VerticalRotation = FMath::RandRange(0.f, CurrentRecoil);
+	float HorizontalRotation = FMath::RandRange(-CurrentRecoil, CurrentRecoil);
+	
+	CurrentRecoil += (WeaponBlueprint->RecoilAmount) / WeaponBlueprint->MaxRecoilBullets;
+	CurrentRecoil = FMath::Min(CurrentRecoil, WeaponBlueprint->RecoilAmount);
+
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_Recoil);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle_Recoil, this, &UTP_WeaponComponent::ResetRecoil, WeaponBlueprint->ResetRecoilTime, true);
+
+	UE_LOG(LogTemp, Warning, TEXT("Vertical Recoil: %f"), VerticalRotation);
+	UE_LOG(LogTemp, Warning, TEXT("Horizontal Recoil: %f"), HorizontalRotation);
+	
+	FRotator ShotDirection = Rotation.Add(VerticalRotation, 0, HorizontalRotation);
+
 	FVector RayStart = Location;
-	RayEnd = RayStart + (Rotation.Vector() * WeaponBlueprint->Range);
+	RayEnd = RayStart + (ShotDirection.Vector() * WeaponBlueprint->Range);
 
 	FCollisionQueryParams CollisionQueryParams;
 	CollisionQueryParams.AddIgnoredActor(Character);
@@ -180,6 +194,12 @@ void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 			Subsystem->RemoveMappingContext(FireMappingContext);
 		}
 	}
+}
+
+void UTP_WeaponComponent::ResetRecoil()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Reset Recoil"));
+	CurrentRecoil = 0;
 }
 
 void UTP_WeaponComponent::AutomaticFiring()

@@ -89,6 +89,13 @@ private:
 	/** Handle the automatic firing */
 	FTimerHandle TimerHandle_HandleFire;
 
+	/** Time Handler for recoil reset */
+	FTimerHandle TimerHandle_Recoil;
+
+	void ResetRecoil();
+
+	float CurrentRecoil = 0;
+
 	bool IsFiring = false;
 	void AutomaticFiring();
 };

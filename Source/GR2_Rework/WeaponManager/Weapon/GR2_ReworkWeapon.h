@@ -122,4 +122,13 @@ public:
 	void OnRep_CurrentAmmoChanged();
 	UFUNCTION()
 	void OnRep_RemainingAmmoChanged();
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category="Recoil")
+	float RecoilAmount;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category="Recoil")
+	float ResetRecoilTime;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category="Recoil")
+	int MaxRecoilBullets;
 };
